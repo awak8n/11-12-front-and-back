@@ -3,109 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная - Магазин фруктов</title>
-    <link rel="stylesheet" href="style/style.css">
+    <title>Главная - Портфолио</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="theme--light">
+    <!-- Переключатель темы -->
+    <div class="theme-switcher">
+        <button class="theme-switcher__btn" id="themeToggle">
+            <span class="theme-switcher__icon">🌙</span>
+            <span class="theme-switcher__text">Темная тема</span>
+        </button>
+    </div>
+
+    <!-- Основной контейнер -->
     <div class="page">
+        <!-- Шапка -->
         <header class="header">
-            <h1 class="header__title">Магазин фруктов</h1>
+            <h1 class="header__title">Моё портфолио</h1>
         </header>
-        
+
+        <!-- Навигация -->
         <nav class="nav">
             <ul class="nav__list">
-                <li class="nav__item">
-                    <a class="nav__link nav__link--active" href="index.html">Главная</a>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="index.html">Главная</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link" href="pages/news.html">Новости</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="pages/practices.html">Практики</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="pages/goods.html">Товары</a>
                 </li>
                 <li class="nav__item">
                     <a class="nav__link" href="pages/contacts.html">Контакты</a>
                 </li>
             </ul>
         </nav>
-        
+
+        <!-- Основной контент -->
         <main class="main">
-            <article class="profile card profile--header fade-in-up">
-                <h1 class="profile__title">Информация об авторе</h1>
-                <img class="profile__photo" src="images/photo.png" alt="Фото автора">
-                <h2 class="profile__name">Левашев Егор Вячеславович</h2>
-                <p class="profile__group">ЭФБО-13-24</p>
-            </article>
-            
-            <section class="about card about--gradient fade-in-up">
-                <h2 class="section__title">Обо мне</h2>
-                <p class="about__text">Я живу в Москве, учусь в РТУ МИРЭА. Стремлюсь к постоянному развитию и достижению поставленных целей.</p>
-            </section>
-            
-            <section class="skills card fade-in-up">
-                <h2 class="section__title">Мои навыки</h2>
-                <div class="skills__grid">
-                    <div class="skill skill--primary">Тайм-менеджмент<br>Умею распределить время</div>
-                    <div class="skill skill--secondary">Критическое мышление<br>Я умею разбивать проблему на части</div>
-                    <div class="skill skill--success">Хорошо играю в футбол<br>Занимался футболом в школе</div>
-                    <div class="skill skill--info">Умею собирать ПК<br>Я сам собираю себе и не только себе ПК</div>
+            <!-- Профиль -->
+            <section class="profile">
+                <div class="profile__card">
+                    <img class="profile__photo" src="images/photo.png" alt="Фото Ивана Иванова">
+                    <div class="profile__info">
+                        <h2 class="profile__name">Иванов Иван</h2>
+                        <p class="profile__group">30БО-01-22</p>
+                    </div>
                 </div>
             </section>
-            
-            <section class="experience fade-in-up">
-                <h2 class="section__title">Мой опыт работы</h2>
-                <div class="experience__grid">
-                    <article class="experience__card card experience__card--gradient">
-                        <h3 class="experience__title">Собирал ПК</h3>
-                        <p class="experience__desc">Подбирал комплектующие, потом собирал ПК на заказ. Опыт работы с клиентами и техническими решениями.</p>
-                    </article>
+
+            <!-- Обо мне -->
+            <section class="about">
+                <h2 class="about__title">Обо мне</h2>
+                <div class="about__content">
+                    <p class="about__text">
+                        Студент, увлекаюсь веб-разработкой. Изучаю HTML, CSS и JavaScript. 
+                        Люблю создавать красивые и функциональные сайты.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Навыки -->
+            <section class="skills">
+                <h2 class="skills__title">Мои навыки</h2>
+                <div class="skills__list">
+                    <div class="skill skill--html">
+                        <span class="skill__name">HTML</span>
+                        <div class="skill__progress">
+                            <div class="skill__progress-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill skill--css">
+                        <span class="skill__name">CSS</span>
+                        <div class="skill__progress">
+                            <div class="skill__progress-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill skill--js">
+                        <span class="skill__name">JavaScript</span>
+                        <div class="skill__progress">
+                            <div class="skill__progress-bar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Проекты -->
+            <section class="projects">
+                <h2 class="projects__title">Проекты</h2>
+                <div class="projects__grid">
+                    <div class="project-card">
+                        <div class="project-card__image">
+                            <img src="images/project1.jpg" alt="Личный сайт">
+                        </div>
+                        <h3 class="project-card__title">Личный сайт</h3>
+                        <p class="project-card__desc">Сайт-портфолио на HTML и CSS</p>
+                        <button class="project-card__btn">Подробнее</button>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-card__image">
+                            <img src="images/project2.jpg" alt="Todo приложение">
+                        </div>
+                        <h3 class="project-card__title">Todo приложение</h3>
+                        <p class="project-card__desc">Простое приложение для задач</p>
+                        <button class="project-card__btn">Подробнее</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Карточки товаров -->
+            <section class="products">
+                <h2 class="products__title">Мои работы</h2>
+                <div class="products__grid">
+                    <div class="product-card">
+                        <div class="product-card__image">
+                            <img src="images/melon1.jpg" alt="Сочная дыня">
+                            <div class="product-card__badge product-card__badge--sale">Скидка 20%</div>
+                        </div>
+                        <div class="product-card__content">
+                            <h3 class="product-card__title">Сочная дыня</h3>
+                            <p class="product-card__desc">Свежая и сладкая дыня сорта Торпеда</p>
+                            <div class="product-card__price">
+                                <span class="product-card__current-price">799 ₽</span>
+                                <span class="product-card__old-price">999 ₽</span>
+                            </div>
+                            <button class="product-card__btn">В корзину</button>
+                        </div>
+                    </div>
                     
-                    <article class="experience__card card experience__card--gradient">
-                        <h3 class="experience__title">Стример</h3>
-                        <p class="experience__desc">Стримил на твиче разное, даже заработал немного. Развил коммуникативные навыки и умение работать с аудиторией.</p>
-                    </article>
+                    <div class="product-card product-card--selected">
+                        <div class="product-card__image">
+                            <img src="images/melon2.jpg" alt="Ароматная дыня">
+                        </div>
+                        <div class="product-card__content">
+                            <h3 class="product-card__title">Ароматная дыня</h3>
+                            <p class="product-card__desc">Дыня с невероятным ароматом и вкусом</p>
+                            <div class="product-card__price">
+                                <span class="product-card__current-price">899 ₽</span>
+                            </div>
+                            <button class="product-card__btn">В корзину</button>
+                        </div>
+                    </div>
                     
-                    <article class="experience__card card experience__card--gradient">
-                        <h3 class="experience__title">Ген. директор</h3>
-                        <p class="experience__desc">Был ген. директором. Приобрел опыт управления и организации рабочего процесса.</p>
-                    </article>
+                    <div class="product-card">
+                        <div class="product-card__image">
+                            <img src="images/melon3.jpg" alt="Спелая дыня">
+                            <div class="product-card__badge product-card__badge--new">Новинка</div>
+                        </div>
+                        <div class="product-card__content">
+                            <h3 class="product-card__title">Спелая дыня</h3>
+                            <p class="product-card__desc">Идеально спелая дыня для настоящих гурманов</p>
+                            <div class="product-card__price">
+                                <span class="product-card__current-price">699 ₽</span>
+                            </div>
+                            <button class="product-card__btn">В корзину</button>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
-        
+
+        <!-- Подвал -->
         <footer class="footer">
-            <p class="footer__text">&copy; 2025 awak8n store. Все права защищены.</p>
+            <p class="footer__text">&copy; 2024 Мой сайт</p>
         </footer>
     </div>
 
-    <script>
-        // Добавляем классы для анимации при загрузке
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-            });
-        });
-
-        // Функция для переключения темы (дополнительная функциональность)
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            
-            // Сохраняем выбор пользователя в localStorage
-            localStorage.setItem('theme', newTheme);
-        }
-
-        // Загружаем сохраненную тему при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
