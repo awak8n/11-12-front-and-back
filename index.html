@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Магазин фруктов</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Магазин фруктов</h1>
+        </header>
+        
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link nav__link--active" href="index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/news.html">Новости</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/practices.html">Практики</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/goods.html">Товары</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <main class="main">
+            <article class="profile card profile--header fade-in-up">
+                <h1 class="profile__title">Информация об авторе</h1>
+                <img class="profile__photo" src="images/photo.png" alt="Фото автора">
+                <h2 class="profile__name">Левашев Егор Вячеславович</h2>
+                <p class="profile__group">ЭФБО-13-24</p>
+            </article>
+            
+            <section class="about card about--gradient fade-in-up">
+                <h2 class="section__title">Обо мне</h2>
+                <p class="about__text">Я живу в Москве, учусь в РТУ МИРЭА. Стремлюсь к постоянному развитию и достижению поставленных целей.</p>
+            </section>
+            
+            <section class="skills card fade-in-up">
+                <h2 class="section__title">Мои навыки</h2>
+                <div class="skills__grid">
+                    <div class="skill skill--primary">Тайм-менеджмент<br>Умею распределить время</div>
+                    <div class="skill skill--secondary">Критическое мышление<br>Я умею разбивать проблему на части</div>
+                    <div class="skill skill--success">Хорошо играю в футбол<br>Занимался футболом в школе</div>
+                    <div class="skill skill--info">Умею собирать ПК<br>Я сам собираю себе и не только себе ПК</div>
+                </div>
+            </section>
+            
+            <section class="experience fade-in-up">
+                <h2 class="section__title">Мой опыт работы</h2>
+                <div class="experience__grid">
+                    <article class="experience__card card experience__card--gradient">
+                        <h3 class="experience__title">Собирал ПК</h3>
+                        <p class="experience__desc">Подбирал комплектующие, потом собирал ПК на заказ. Опыт работы с клиентами и техническими решениями.</p>
+                    </article>
+                    
+                    <article class="experience__card card experience__card--gradient">
+                        <h3 class="experience__title">Стример</h3>
+                        <p class="experience__desc">Стримил на твиче разное, даже заработал немного. Развил коммуникативные навыки и умение работать с аудиторией.</p>
+                    </article>
+                    
+                    <article class="experience__card card experience__card--gradient">
+                        <h3 class="experience__title">Ген. директор</h3>
+                        <p class="experience__desc">Был ген. директором. Приобрел опыт управления и организации рабочего процесса.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="footer">
+            <p class="footer__text">&copy; 2025 awak8n store. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Добавляем классы для анимации при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Функция для переключения темы (дополнительная функциональность)
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            // Сохраняем выбор пользователя в localStorage
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Загружаем сохраненную тему при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+    </script>
+</body>
+</html>

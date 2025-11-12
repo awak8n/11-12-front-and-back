@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары - Магазин фруктов</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <h1 class="header__title">Магазин фруктов</h1>
+        </header>
+        
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="practices.html">Практики</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link nav__link--active" href="goods.html">Товары</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <main class="main">
+            <h1 class="page__title">Наши товары</h1>
+            
+            <section class="goods-filters card fade-in-up">
+                <h3 class="goods-filters__title">Фильтры</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn filter-btn--active">Все товары</button>
+                    <button class="filter-btn">Сезонные</button>
+                    <button class="filter-btn">Экзотические</button>
+                    <button class="filter-btn">По акции</button>
+                </div>
+            </section>
+            
+            <div class="goods__grid">
+                <article class="product-card card fade-in-up">
+                    <div class="product-card__badge product-card__badge--bestseller">🔥 Хит продаж</div>
+                    <img src="../images/goods1.jpg" alt="Сочный арбуз" class="product-card__image">
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Арбуз</h3>
+                        <p class="product-card__description">Сочный и сладкий</p>
+                        <div class="product-card__price">
+                            <span class="product-card__price-current">3 000 ₽</span>
+                            <span class="product-card__price-old">3 500 ₽</span>
+                        </div>
+                        <div class="product-card__meta">
+                            <span class="product-card__rating">⭐ 4.8</span>
+                            <span class="product-card__stock">В наличии</span>
+                        </div>
+                        <button class="btn btn--buy product-card__btn">Добавить в корзину</button>
+                    </div>
+                </article>
+
+                <article class="product-card card fade-in-up">
+                    <div class="product-card__badge product-card__badge--bestseller">🔥 Хит продаж</div>
+                    <img src="../images/goods2.jpg" alt="Спелая дыня" class="product-card__image">
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Дыня</h3>
+                        <p class="product-card__description">Ароматная с нежной мякотью</p>
+                        <div class="product-card__price">
+                            <span class="product-card__price-current">2 000 ₽</span>
+                        </div>
+                        <div class="product-card__meta">
+                            <span class="product-card__rating">⭐ 4.6</span>
+                            <span class="product-card__stock">В наличии</span>
+                        </div>
+                        <button class="btn btn--buy product-card__btn">Добавить в корзину</button>
+                    </div>
+                </article>
+
+                <article class="product-card card fade-in-up">
+                    <img src="../images/goods3.jpg" alt="Свежие бананы" class="product-card__image">
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Бананы</h3>
+                        <p class="product-card__description">Спелые, вкусные</p>
+                        <div class="product-card__price">
+                            <span class="product-card__price-current">750 ₽</span>
+                        </div>
+                        <div class="product-card__meta">
+                            <span class="product-card__rating">⭐ 4.9</span>
+                            <span class="product-card__stock product-card__stock--low">Осталось: 1 шт.</span>
+                        </div>
+                        <button class="btn btn--buy product-card__btn">Добавить в корзину</button>
+                    </div>
+                </article>
+
+                <article class="product-card card fade-in-up">
+                    <div class="product-card__badge product-card__badge--new">Новинка</div>
+                    <img src="../images/goods4.jpg" alt="Свежая клубника" class="product-card__image">
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Клубника</h3>
+                        <p class="product-card__description">Свежая, вкусная</p>
+                        <div class="product-card__price">
+                            <span class="product-card__price-current">1 200 ₽</span>
+                        </div>
+                        <div class="product-card__meta">
+                            <span class="product-card__rating">⭐ 5.0</span>
+                            <span class="product-card__stock">В наличии</span>
+                        </div>
+                        <button class="btn btn--buy product-card__btn">Добавить в корзину</button>
+                    </div>
+                </article>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p class="footer__text">&copy; 2025 awak8n store. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Добавляем анимации для карточек
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            // Фильтрация товаров
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Убираем активный класс у всех кнопок
+                    filterButtons.forEach(btn => btn.classList.remove('filter-btn--active'));
+                    // Добавляем активный класс текущей кнопке
+                    this.classList.add('filter-btn--active');
+                    
+                    const filter = this.textContent.toLowerCase();
+                    
+                    // Фильтрация товаров
+                    productCards.forEach(card => {
+                        if (filter === 'все товары') {
+                            card.style.display = 'block';
+                        } else {
+                            // Здесь можно добавить логику фильтрации по категориям
+                            // Пока просто показываем все товары
+                            card.style.display = 'block';
+                        }
+                    });
+                });
+            });
+
+            // Обработка кнопок "Добавить в корзину"
+            const addToCartButtons = document.querySelectorAll('.btn--buy');
+            let cartCount = 0;
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('.product-card__title').textContent;
+                    const productPrice = productCard.querySelector('.product-card__price-current').textContent;
+                    
+                    cartCount++;
+                    
+                    // Визуальная обратная связь
+                    this.textContent = '✓ Добавлено';
+                    this.style.background = 'var(--color-success)';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Добавить в корзину';
+                        this.style.background = '';
+                    }, 2000);
+                    
+                    // Уведомление для пользователя
+                    alert(`Товар "${productName}" за ${productPrice} добавлен в корзину!\n\nВсего товаров в корзине: ${cartCount}`);
+                });
+            });
+
+            // Эффект при наведении на карточку товара
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        // Функция для переключения темы
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Загружаем сохраненную тему
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+    </script>
+</body>
+</html>
