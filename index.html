@@ -3,170 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная - Портфолио</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Портфолио - Главная</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="theme--light">
-    <!-- Переключатель темы -->
-    <div class="theme-switcher">
-        <button class="theme-switcher__btn" id="themeToggle">
-            <span class="theme-switcher__icon">🌙</span>
-            <span class="theme-switcher__text">Темная тема</span>
-        </button>
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">💼</div>
+                    <h1>Подгузов Максим</h1>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link active">Главная</a></li>
+                        <li><a href="pages/projects.html" class="nav-link">Проекты</a></li>
+                        <li><a href="pages/diary.html" class="nav-link">Дневник</a></li>
+                        <li><a href="pages/contacts.html" class="nav-link">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2 class="hero-title">Привет! Я <span class="highlight">студент</span></h2>
+                        <p class="hero-subtitle">группы <strong>ЭФБО-15-24</strong></p>
+                        <p class="hero-description">Увлекаюсь веб-разработкой и создаю современные цифровые решения</p>
+                        <div class="hero-buttons">
+                            <a href="assets/resume.pdf" download class="btn btn-primary">
+                                📄 Скачать резюме
+                            </a>
+                            <button class="btn btn-secondary" id="uploadResumeBtn">
+                                📤 Загрузить резюме
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="photo-container">
+                            <img src="images/фото студента.jpg" alt="Фото студента" class="student-photo">
+                            <div class="photo-frame"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="content-sections">
+            <div class="container">
+                <div class="sections-grid">
+                    
+                    <div class="section-card">
+                        <div class="section-header">
+                            <h3>Мои навыки</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-row">
+                                <span class="skill-name">HTML/CSS</span>
+                                <div class="skill-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">Bootstrap</span>
+                                <div class="skill-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-row">
+                                <span class="skill-name">React</span>
+                                <div class="skill-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                                <span class="skill-percent">60%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="section-card">
+                        <div class="section-header">
+                            <h3>Лучшие проекты</h3>
+                        </div>
+                        <div class="projects-mini-grid">
+                            <div class="mini-project-card">
+                                <div class="project-number">П1</div>
+                                <h4>Личный сайт</h4>
+                                <p>HTML, CSS</p>
+                            </div>
+                            <div class="mini-project-card">
+                                <div class="project-number">П2</div>
+                                <h4>Todo App</h4>
+                                <p>JavaScript</p>
+                            </div>
+                            <div class="mini-project-card">
+                                <div class="project-number">П3</div>
+                                <h4>Интернет-магазин</h4>
+                                <p>React</p>
+                            </div>
+                        </div>
+                        <div class="view-all">
+                            <a href="pages/projects.html" class="view-all-link">Все проекты →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Подгузов Максим. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="mailto:student@edu.ru">📧 student@edu.ru</a>
+                <a href="https://github.com/username">🐙 GitHub: xameze</a>
+                <span>🏠 Москва, Россия</span>
+            </div>
+        </div>
+    </footer>
+
+    
+    <div class="modal" id="resumeModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Загрузка резюме</h3>
+                <button class="modal-close" id="closeResumeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📄</div>
+                    <p>Перетащите файл сюда или нажмите для выбора</p>
+                    <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" style="display: none;">
+                    <button class="btn btn-outline" id="selectFileBtn">Выбрать файл</button>
+                </div>
+                <div class="upload-info">
+                    <p>Поддерживаемые форматы: PDF, DOC, DOCX</p>
+                    <p>Максимальный размер: 5MB</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelUpload">Отмена</button>
+                <button class="btn btn-primary" id="confirmUpload" disabled>Загрузить</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Основной контейнер -->
-    <div class="page">
-        <!-- Шапка -->
-        <header class="header">
-            <h1 class="header__title">Моё портфолио</h1>
-        </header>
-
-        <!-- Навигация -->
-        <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item nav__item--active">
-                    <a class="nav__link" href="index.html">Главная</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="pages/news.html">Новости</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="pages/contacts.html">Контакты</a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Основной контент -->
-        <main class="main">
-            <!-- Профиль -->
-            <section class="profile">
-                <div class="profile__card">
-                    <img class="profile__photo" src="images/photo.png" alt="Фото Ивана Иванова">
-                    <div class="profile__info">
-                        <h2 class="profile__name">Иванов Иван</h2>
-                        <p class="profile__group">30БО-01-22</p>
+    
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Свяжитесь со мной</h3>
+                <button class="modal-close" id="closeContactModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-                </div>
-            </section>
-
-            <!-- Обо мне -->
-            <section class="about">
-                <h2 class="about__title">Обо мне</h2>
-                <div class="about__content">
-                    <p class="about__text">
-                        Студент, увлекаюсь веб-разработкой. Изучаю HTML, CSS и JavaScript. 
-                        Люблю создавать красивые и функциональные сайты.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Навыки -->
-            <section class="skills">
-                <h2 class="skills__title">Мои навыки</h2>
-                <div class="skills__list">
-                    <div class="skill skill--html">
-                        <span class="skill__name">HTML</span>
-                        <div class="skill__progress">
-                            <div class="skill__progress-bar" style="width: 90%"></div>
-                        </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-                    <div class="skill skill--css">
-                        <span class="skill__name">CSS</span>
-                        <div class="skill__progress">
-                            <div class="skill__progress-bar" style="width: 85%"></div>
-                        </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
                     </div>
-                    <div class="skill skill--js">
-                        <span class="skill__name">JavaScript</span>
-                        <div class="skill__progress">
-                            <div class="skill__progress-bar" style="width: 70%"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Проекты -->
-            <section class="projects">
-                <h2 class="projects__title">Проекты</h2>
-                <div class="projects__grid">
-                    <div class="project-card">
-                        <div class="project-card__image">
-                            <img src="images/project1.jpg" alt="Личный сайт">
-                        </div>
-                        <h3 class="project-card__title">Личный сайт</h3>
-                        <p class="project-card__desc">Сайт-портфолио на HTML и CSS</p>
-                        <button class="project-card__btn">Подробнее</button>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-card__image">
-                            <img src="images/project2.jpg" alt="Todo приложение">
-                        </div>
-                        <h3 class="project-card__title">Todo приложение</h3>
-                        <p class="project-card__desc">Простое приложение для задач</p>
-                        <button class="project-card__btn">Подробнее</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Карточки товаров -->
-            <section class="products">
-                <h2 class="products__title">Мои работы</h2>
-                <div class="products__grid">
-                    <div class="product-card">
-                        <div class="product-card__image">
-                            <img src="images/melon1.jpg" alt="Сочная дыня">
-                            <div class="product-card__badge product-card__badge--sale">Скидка 20%</div>
-                        </div>
-                        <div class="product-card__content">
-                            <h3 class="product-card__title">Сочная дыня</h3>
-                            <p class="product-card__desc">Свежая и сладкая дыня сорта Торпеда</p>
-                            <div class="product-card__price">
-                                <span class="product-card__current-price">799 ₽</span>
-                                <span class="product-card__old-price">999 ₽</span>
-                            </div>
-                            <button class="product-card__btn">В корзину</button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card product-card--selected">
-                        <div class="product-card__image">
-                            <img src="images/melon2.jpg" alt="Ароматная дыня">
-                        </div>
-                        <div class="product-card__content">
-                            <h3 class="product-card__title">Ароматная дыня</h3>
-                            <p class="product-card__desc">Дыня с невероятным ароматом и вкусом</p>
-                            <div class="product-card__price">
-                                <span class="product-card__current-price">899 ₽</span>
-                            </div>
-                            <button class="product-card__btn">В корзину</button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card__image">
-                            <img src="images/melon3.jpg" alt="Спелая дыня">
-                            <div class="product-card__badge product-card__badge--new">Новинка</div>
-                        </div>
-                        <div class="product-card__content">
-                            <h3 class="product-card__title">Спелая дыня</h3>
-                            <p class="product-card__desc">Идеально спелая дыня для настоящих гурманов</p>
-                            <div class="product-card__price">
-                                <span class="product-card__current-price">699 ₽</span>
-                            </div>
-                            <button class="product-card__btn">В корзину</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Подвал -->
-        <footer class="footer">
-            <p class="footer__text">&copy; 2024 Мой сайт</p>
-        </footer>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelContact">Отмена</button>
+                <button class="btn btn-primary" id="sendMessage">Отправить сообщение</button>
+            </div>

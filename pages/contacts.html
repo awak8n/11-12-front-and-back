@@ -3,204 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты - Магазин фруктов</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <title>Портфолио - Контакты</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="page">
-        <header class="header">
-            <h1 class="header__title">Контакты</h1>
-        </header>
-        
-        <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item">
-                    <a class="nav__link" href="../index.html">Главная</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="news.html">Новости</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="practices.html">Практики</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="goods.html">Товары</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link nav__link--active" href="contacts.html">Контакты</a>
-                </li>
-            </ul>
-        </nav>
-        
-        <main class="main">
-            <h1 class="page__title">Контакты для сотрудничества</h1>
-            
-            <div class="contacts__grid">
-                <div class="contact-card card fade-in-up">
-                    <h3 class="contact-card__title">Email:</h3>
-                    <p class="contact-card__value">desscometomm@mail.ru</p>
+    
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">💼</div>
+                    <h1>Подгузов Максим</h1>
                 </div>
-                
-                <div class="contact-card card fade-in-up">
-                    <h3 class="contact-card__title">Номер телефона</h3>
-                    <h3 class="contact-card__subtitle">(интернет-магазина):</h3>
-                    <p class="contact-card__value">+7 (111) 111-22-33</p>
-                </div>
-                
-                <div class="contact-card card fade-in-up">
-                    <h3 class="contact-card__title">Адрес:</h3>
-                    <p class="contact-card__value">г. Москва, ул. Пушкина, д. 1</p>
-                </div>
-                
-                <div class="contact-card card fade-in-up">
-                    <h3 class="contact-card__title">График работы:</h3>
-                    <p class="contact-card__value">Пн-Пт: 9:00-18:00</p>
-                    <p class="contact-card__value">Сб-Вс: 10:00-16:00</p>
-                </div>
-                
-                <div class="contact-card card fade-in-up">
-                    <h3 class="contact-card__title">Социальные сети:</h3>
-                    <p class="contact-card__value">VK: https://m.vk.com/wowowiwdkdke</p>
-                    <p class="contact-card__value">Telegram: @sdsdsdsdsd</p>
-                    <p class="contact-card__value">WhatsApp: +7 (111) 222-11-12</p>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Главная</a></li>
+                        <li><a href="projects.html" class="nav-link">Проекты</a></li>
+                        <li><a href="diary.html" class="nav-link">Дневник</a></li>
+                        <li><a href="contacts.html" class="nav-link active">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
+        </div>
+    </header>
 
-            <div class="contacts__actions">
-                <button class="btn btn--primary contacts__btn" onclick="contactModal.showModal()">Написать нам сообщение</button>
-            </div>
-        </main>
-
-        <!-- Модальное окно -->
-        <dialog class="modal" id="contactModal">
-            <div class="modal__header">
-                <h2 class="modal__title">Форма обратной связи</h2>
-            </div>
-            <div class="modal__content">
-                <form class="modal__form" id="feedbackForm">
-                    <div class="form__group">
-                        <label for="name" class="form__label">Имя *</label>
-                        <input type="text" id="name" name="name" class="form__input" required placeholder="Введите ваше имя">
-                    </div>
-                    <div class="form__group">
-                        <label for="phone" class="form__label">Телефон *</label>
-                        <input type="tel" id="phone" name="phone" class="form__input" required placeholder="+7 (XXX) XXX-XX-XX">
-                    </div>
-                    <div class="form__group">
-                        <label for="email" class="form__label">Электронная почта *</label>
-                        <input type="email" id="email" name="email" class="form__input" required placeholder="example@mail.ru">
-                    </div>
-                    <div class="form__group">
-                        <label for="message" class="form__label">Сообщение *</label>
-                        <textarea id="message" name="message" class="form__textarea" required placeholder="Ваше сообщение..."></textarea>
-                    </div>
-                    <div class="modal__actions">
-                        <button type="button" class="btn btn--secondary" onclick="contactModal.close()">Отмена</button>
-                        <button type="submit" class="btn btn--primary">Отправить</button>
-                    </div>
-                </form>
-            </div>
-        </dialog>
+    <main>
         
-        <footer class="footer">
-            <p class="footer__text">&copy; 2025 awak8n store. Все права защищены.</p>
-        </footer>
+        <section class="contacts-page">
+            <div class="container">
+                <div class="contacts-content">
+                    
+                    <div class="contact-form-section">
+                        <h2>Свяжитесь со мной</h2>
+                        <form class="contact-form-main" id="contactFormMain">
+                            <div class="form-group">
+                                <label for="contactName">Имя:</label>
+                                <input type="text" id="contactName" name="name" placeholder="Введите ваше имя" required>
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email:</label>
+                                <input type="email" id="contactEmail" name="email" placeholder="Введите ваш email" required>
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Сообщение:</label>
+                                <textarea id="contactMessage" name="message" rows="5" placeholder="Введите ваше сообщение..." required></textarea>
+                                <span class="error-message" id="messageError"></span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                📨 Отправить сообщение
+                            </button>
+                        </form>
+                    </div>
+
+                    
+                    <div class="contact-info-section">
+                        <h3>Контакты</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">📧</div>
+                                <div class="contact-text">
+                                    <strong>Email</strong>
+                                    <p>student@edu.ru</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🐙</div>
+                                <div class="contact-text">
+                                    <strong>GitHub</strong>
+                                    <p>username</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🏠</div>
+                                <div class="contact-text">
+                                    <strong>Местоположение</strong>
+                                    <p>Город, Страна</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="additional-info">
+                            <h4>README.md</h4>
+                            <div class="readme-content">
+                                <p><strong>Дата:</strong> 2025-10-08</p>
+                                <p><strong>Страница:</strong> 3/6</p>
+                                <p>Эта страница контактов является частью моего учебного портфолио. Вы можете связаться со мной через форму или используя контактные данные слева.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Подгузов Максим. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="mailto:student@edu.ru">📧 student@edu.ru</a>
+                <a href="https://github.com/username">🐙 GitHub: xameze</a>
+                <span>🏠 Москва, Россия</span>
+            </div>
+        </div>
+    </footer>
+
+    
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Сообщение отправлено!</h3>
+                <button class="modal-close" id="closeSuccessModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-content">
+                    <div class="success-icon">✅</div>
+                    <p>Ваше сообщение было успешно отправлено. Я свяжусь с вами в ближайшее время.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="closeSuccess">Закрыть</button>
+            </div>
+        </div>
     </div>
 
-    <script>
-        // Добавляем анимации для карточек
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-            });
-
-            // Валидация формы
-            const phoneInput = document.getElementById('phone');
-            if (phoneInput) {
-                phoneInput.addEventListener('input', function(e) {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.startsWith('7') || value.startsWith('8')) {
-                        value = value.substring(1);
-                    }
-                    
-                    let formattedValue = '+7 (';
-                    if (value.length > 0) {
-                        formattedValue += value.substring(0, 3);
-                    }
-                    if (value.length > 3) {
-                        formattedValue += ') ' + value.substring(3, 6);
-                    }
-                    if (value.length > 6) {
-                        formattedValue += '-' + value.substring(6, 8);
-                    }
-                    if (value.length > 8) {
-                        formattedValue += '-' + value.substring(8, 10);
-                    }
-                    
-                    e.target.value = formattedValue;
-                });
-            }
-
-            // Обработка отправки формы
-            const form = document.getElementById('feedbackForm');
-            const modal = document.getElementById('contactModal');
-
-            if (form) {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    
-                    // Валидация данных
-                    const name = document.getElementById('name').value;
-                    const phone = document.getElementById('phone').value;
-                    const email = document.getElementById('email').value;
-                    const message = document.getElementById('message').value;
-                    
-                    if (!name || !phone || !email || !message) {
-                        alert('Пожалуйста, заполните все обязательные поля.');
-                        return;
-                    }
-                    
-                    // Эмуляция отправки
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.textContent;
-                    submitBtn.textContent = 'Отправка...';
-                    submitBtn.disabled = true;
-                    
-                    setTimeout(() => {
-                        alert('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
-                        modal.close();
-                        form.reset();
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }, 1500);
-                });
-            }
-
-            // Закрытие модального окна по клику вне его
-            if (modal) {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === modal) {
-                        modal.close();
-                    }
-                });
-            }
-        });
-
-        // Функция для переключения темы
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        }
-
-        // Загружаем сохраненную тему
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        });
-    </script>
+    <script src="../scripts/contacts.js"></script>
 </body>
 </html>
