@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.classList.remove('loading');
-                        submitBtn.textContent = '📨 Отправить сообщение';
+                        submitBtn.textContent = 'Отправить сообщение';
                     }
                     
                     

@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let statusClass = '';
             switch(item.status) {
                 case 'completed':
-                    statusIcon = '✓';
+                    statusIcon = '✅';
                     statusClass = 'status-completed';
                     break;
                 case 'in-progress':
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     statusClass = 'status-in-progress';
                     break;
                 case 'planned':
-                    statusIcon = '📅';
+                    statusIcon = '🖇️';
                     statusClass = 'status-planned';
                     break;
             }
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (coursesList.children.length === 0) {
             const addCourseBtn = document.createElement('button');
             addCourseBtn.className = 'btn btn-outline';
-            addCourseBtn.textContent = '➕ Добавить курс';
+            addCourseBtn.textContent = 'Добавить курс';
             addCourseBtn.addEventListener('click', openCourseModal);
             coursesList.appendChild(addCourseBtn);
         }
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const addCourseBtn = document.createElement('button');
         addCourseBtn.className = 'btn btn-outline';
-        addCourseBtn.textContent = '➕ Добавить курс';
+        addCourseBtn.textContent = 'Добавить курс';
         addCourseBtn.addEventListener('click', openCourseModal);
         coursesList.appendChild(addCourseBtn);
 

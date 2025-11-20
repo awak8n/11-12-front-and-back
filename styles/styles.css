@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -6,17 +5,20 @@
 }
 
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary-color: #f8fafc;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --text-light: #94a3b8;
-    --background: #ffffff;
-    --surface: #f8fafc;
-    --border: #e2e8f0;
-    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --primary-color: #8b5cf6;
+    --primary-dark: #7c3aed;
+    --primary-light: #a78bfa;
+    --secondary-color: #1f2937;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-light: #9ca3af;
+    --background: #111827;
+    --surface: #1f2937;
+    --surface-light: #374151;
+    --border: #374151;
+    --border-light: #4b5563;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px -1px rgb(0 0 0 / 0.5);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
     --radius: 8px;
     --transition: all 0.3s ease;
 }
@@ -34,9 +36,8 @@ body {
     padding: 0 2rem;
 }
 
-
 .header {
-    background: var(--background);
+    background: var(--surface);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
@@ -58,6 +59,7 @@ body {
 
 .logo-icon {
     font-size: 1.5rem;
+    color: var(--primary-color);
 }
 
 .logo h1 {
@@ -109,7 +111,6 @@ body {
     background: var(--text-primary);
     transition: var(--transition);
 }
-
 
 .hero {
     padding: 4rem 0;
@@ -179,7 +180,7 @@ body {
 }
 
 .btn-secondary {
-    background: var(--surface);
+    background: var(--surface-light);
     color: var(--text-primary);
     border-color: var(--border);
 }
@@ -187,6 +188,7 @@ body {
 .btn-secondary:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
+    background: var(--surface);
 }
 
 .btn-outline {
@@ -218,6 +220,7 @@ body {
     object-fit: cover;
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
+    border: 2px solid var(--surface-light);
 }
 
 .photo-frame {
@@ -230,7 +233,6 @@ body {
     border-radius: calc(var(--radius) + 4px);
     z-index: -1;
 }
-
 
 .content-sections {
     padding: 4rem 0;
@@ -254,7 +256,7 @@ body {
 .section-header {
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--border-light);
 }
 
 .section-header h3 {
@@ -262,7 +264,6 @@ body {
     font-weight: 600;
     color: var(--text-primary);
 }
-
 
 .skills-list {
     display: flex;
@@ -289,7 +290,7 @@ body {
 .progress-bar {
     width: 100%;
     height: 8px;
-    background: var(--border);
+    background: var(--surface-light);
     border-radius: 4px;
     overflow: hidden;
 }
@@ -307,7 +308,6 @@ body {
     text-align: right;
 }
 
-
 .projects-mini-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -316,7 +316,7 @@ body {
 }
 
 .mini-project-card {
-    background: var(--background);
+    background: var(--surface-light);
     padding: 1.5rem 1rem;
     border-radius: var(--radius);
     text-align: center;
@@ -328,6 +328,7 @@ body {
     transform: translateY(-2px);
     box-shadow: var(--shadow);
     border-color: var(--primary-color);
+    background: var(--surface);
 }
 
 .project-number {
@@ -361,15 +362,15 @@ body {
 }
 
 .view-all-link:hover {
-    color: var(--primary-dark);
+    color: var(--primary-light);
 }
 
-
 .footer {
-    background: var(--text-primary);
-    color: white;
+    background: var(--surface);
+    color: var(--text-primary);
     padding: 2rem 0;
     text-align: center;
+    border-top: 1px solid var(--border);
 }
 
 .footer-links {
@@ -387,9 +388,8 @@ body {
 }
 
 .footer-links a:hover {
-    color: white;
+    color: var(--primary-color);
 }
-
 
 .modal {
     display: none;
@@ -398,7 +398,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     z-index: 2000;
     backdrop-filter: blur(5px);
 }
@@ -410,13 +410,14 @@ body {
 }
 
 .modal-content {
-    background: var(--background);
+    background: var(--surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
     width: 90%;
     max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
+    border: 1px solid var(--border-light);
 }
 
 .modal-header {
@@ -443,7 +444,7 @@ body {
 }
 
 .modal-close:hover {
-    color: var(--text-primary);
+    color: var(--primary-color);
 }
 
 .modal-body {
@@ -458,7 +459,6 @@ body {
     border-top: 1px solid var(--border);
 }
 
-
 .upload-area {
     border: 2px dashed var(--border);
     border-radius: var(--radius);
@@ -466,20 +466,23 @@ body {
     text-align: center;
     transition: var(--transition);
     cursor: pointer;
+    background: var(--surface-light);
 }
 
 .upload-area:hover {
     border-color: var(--primary-color);
+    background: var(--surface);
 }
 
 .upload-area.dragover {
     border-color: var(--primary-color);
-    background: var(--surface);
+    background: var(--surface-light);
 }
 
 .upload-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 .upload-info {
@@ -494,7 +497,6 @@ body {
     color: var(--text-light);
     margin-bottom: 0.25rem;
 }
-
 
 .contact-form {
     display: flex;
@@ -521,15 +523,22 @@ body {
     font-family: inherit;
     font-size: 1rem;
     transition: var(--transition);
+    background: var(--surface-light);
+    color: var(--text-primary);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+    background: var(--surface);
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-light);
+}
 
 @media (max-width: 768px) {
     .container {
@@ -619,7 +628,7 @@ body {
 .filter-btn {
     padding: 0.5rem 1rem;
     border: 2px solid var(--border);
-    background: var(--background);
+    background: var(--surface-light);
     color: var(--text-secondary);
     border-radius: var(--radius);
     cursor: pointer;
@@ -638,7 +647,6 @@ body {
     border-color: var(--primary-color);
 }
 
-
 .projects-grid-full {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -646,7 +654,7 @@ body {
 }
 
 .project-card-full {
-    background: var(--background);
+    background: var(--surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
@@ -657,6 +665,7 @@ body {
 .project-card-full:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
 }
 
 .project-image {
@@ -705,7 +714,7 @@ body {
 .btn-view-details {
     width: 100%;
     padding: 0.75rem;
-    background: var(--surface);
+    background: var(--surface-light);
     border: 2px solid var(--border);
     border-radius: var(--radius);
     color: var(--text-primary);
@@ -717,13 +726,13 @@ body {
 .btn-view-details:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
-    background: var(--background);
+    background: var(--surface);
 }
-
 
 .project-modal-content {
     max-width: 900px;
     width: 95%;
+    background: var(--surface);
 }
 
 .project-modal-grid {
@@ -741,7 +750,7 @@ body {
 .main-image {
     width: 100%;
     height: 300px;
-    background: var(--surface);
+    background: var(--surface-light);
     border-radius: var(--radius);
     overflow: hidden;
     display: flex;
@@ -768,6 +777,7 @@ body {
     cursor: pointer;
     border: 2px solid var(--border);
     transition: var(--transition);
+    background: var(--surface-light);
 }
 
 .thumbnail.active {
@@ -847,51 +857,6 @@ body {
     flex-wrap: wrap;
 }
 
-
-@media (max-width: 768px) {
-    .page-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .projects-grid-full {
-        grid-template-columns: 1fr;
-    }
-
-    .project-modal-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .project-modal-images {
-        order: 2;
-    }
-
-    .project-modal-info {
-        order: 1;
-    }
-
-    .project-links {
-        justify-content: center;
-    }
-
-    .image-thumbnails {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .project-filters {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .filter-btn {
-        flex: 1;
-        text-align: center;
-        min-width: 60px;
-    }
-}
-
 .diary-page {
     padding: 2rem 0 4rem;
     background: var(--surface);
@@ -906,7 +871,7 @@ body {
 }
 
 .diary-section {
-    background: var(--background);
+    background: var(--surface-light);
     padding: 2rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
@@ -919,9 +884,8 @@ body {
     margin-bottom: 1.5rem;
     color: var(--text-primary);
     padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--border-light);
 }
-
 
 .progress-list {
     display: flex;
@@ -989,7 +953,6 @@ body {
     50% { opacity: 0.7; }
 }
 
-
 .courses-list {
     display: flex;
     flex-direction: column;
@@ -1023,7 +986,7 @@ body {
 .course-progress {
     width: 100%;
     height: 8px;
-    background: var(--border);
+    background: var(--surface-light);
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 0.5rem;
@@ -1059,7 +1022,6 @@ body {
     color: var(--primary-color);
 }
 
-
 .progress-value {
     text-align: center;
     margin-top: 0.5rem;
@@ -1071,7 +1033,7 @@ input[type="range"] {
     width: 100%;
     height: 6px;
     border-radius: 3px;
-    background: var(--border);
+    background: var(--surface-light);
     outline: none;
     -webkit-appearance: none;
 }
@@ -1083,7 +1045,7 @@ input[type="range"]::-webkit-slider-thumb {
     border-radius: 50%;
     background: var(--primary-color);
     cursor: pointer;
-    border: 2px solid var(--background);
+    border: 2px solid var(--surface);
     box-shadow: var(--shadow);
 }
 
@@ -1093,88 +1055,15 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 50%;
     background: var(--primary-color);
     cursor: pointer;
-    border: 2px solid var(--background);
+    border: 2px solid var(--surface);
     box-shadow: var(--shadow);
 }
-
 
 .progress-form,
 .course-form {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-group label {
-    font-weight: 500;
-    color: var(--text-primary);
-}
-
-.form-group input,
-.form-group select {
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: var(--transition);
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-
-@media (max-width: 768px) {
-    .diary-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .diary-section {
-        padding: 1.5rem;
-    }
-
-    .progress-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .progress-date {
-        min-width: auto;
-    }
-
-    .progress-task {
-        margin: 0;
-    }
-
-    .course-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .course-actions {
-        flex-direction: column;
-        gap: 0.5rem;
-        align-items: flex-start;
-    }
-}
-
-@media (max-width: 480px) {
-    .diary-section {
-        padding: 1rem;
-    }
 }
 
 .contacts-page {
@@ -1190,9 +1079,8 @@ input[type="range"]::-moz-range-thumb {
     align-items: start;
 }
 
-
 .contact-form-section {
-    background: var(--background);
+    background: var(--surface-light);
     padding: 2.5rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
@@ -1213,105 +1101,20 @@ input[type="range"]::-moz-range-thumb {
     gap: 1.5rem;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-group label {
-    font-weight: 600;
-    color: var(--text-primary);
-    font-size: 1rem;
-}
-
 .form-group input,
 .form-group textarea {
-    padding: 1rem;
-    border: 2px solid var(--border);
-    border-radius: var(--radius);
-    font-family: inherit;
-    font-size: 1rem;
-    transition: var(--transition);
     background: var(--surface);
+    color: var(--text-primary);
+    border: 2px solid var(--border);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    background: var(--background);
+    background: var(--surface-light);
 }
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: var(--text-light);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.error-message {
-    color: #ef4444;
-    font-size: 0.875rem;
-    min-height: 1.25rem;
-    display: block;
-}
-
-.form-group.error input,
-.form-group.error textarea {
-    border-color: #ef4444;
-}
-
-.form-group.success input,
-.form-group.success textarea {
-    border-color: #10b981;
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 1rem;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-submit:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.btn-submit.loading {
-    color: transparent;
-}
-
-.btn-submit.loading::after {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 50%;
-    left: 50%;
-    margin-left: -10px;
-    margin-top: -10px;
-    border: 2px solid transparent;
-    border-top: 2px solid white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 
 .contact-info-section {
-    background: var(--background);
+    background: var(--surface-light);
     padding: 2.5rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
@@ -1325,7 +1128,7 @@ input[type="range"]::-moz-range-thumb {
     margin-bottom: 1.5rem;
     color: var(--text-primary);
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--border-light);
 }
 
 .contact-details {
@@ -1348,6 +1151,7 @@ input[type="range"]::-moz-range-thumb {
 .contact-item:hover {
     transform: translateX(5px);
     box-shadow: var(--shadow);
+    border: 1px solid var(--border-light);
 }
 
 .contact-icon {
@@ -1375,7 +1179,6 @@ input[type="range"]::-moz-range-thumb {
     margin: 0;
     font-size: 0.95rem;
 }
-
 
 .additional-info {
     background: var(--surface);
@@ -1412,7 +1215,6 @@ input[type="range"]::-moz-range-thumb {
     color: var(--text-primary);
 }
 
-
 .success-content {
     text-align: center;
     padding: 1rem;
@@ -1421,6 +1223,7 @@ input[type="range"]::-moz-range-thumb {
 .success-icon {
     font-size: 4rem;
     margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 .success-content p {
@@ -1429,57 +1232,65 @@ input[type="range"]::-moz-range-thumb {
     line-height: 1.6;
 }
 
-
-@media (max-width: 968px) {
+@media (max-width: 768px) {
+    .diary-content,
     .contacts-content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-
-    .contact-form-section,
-    .contact-info-section {
-        padding: 2rem;
+    
+    .project-modal-grid {
+        grid-template-columns: 1fr;
     }
 }
+/* Стили для мини-картинок проектов */
+.project-image-mini {
+    width: 100%;
+    height: 80px; /* Уменьшил высоту с 120px до 80px */
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: var(--surface-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.project-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.mini-project-card:hover .project-thumbnail {
+    transform: scale(1.05);
+}
+
+/* Если изображение не загружено, показываем placeholder */
+.project-image-mini:empty::before {
+    content: '🖼️';
+    font-size: 1.5rem; /* Уменьшил размер иконки */
+    color: var(--text-light);
+}
+
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-    .contacts-page {
-        padding: 1rem 0 2rem;
-    }
-
-    .contact-form-section,
-    .contact-info-section {
-        padding: 1.5rem;
-    }
-
-    .contact-form-section h2 {
-        font-size: 1.75rem;
-    }
-
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.75rem;
-    }
-
-    .contact-icon {
-        align-self: center;
+    .project-image-mini {
+        height: 70px; /* Уменьшил для планшетов */
     }
 }
 
 @media (max-width: 480px) {
-    .contact-form-section,
-    .contact-info-section {
-        padding: 1rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 0.75rem;
+    .project-image-mini {
+        height: 60px; /* Уменьшил для мобильных */
     }
 }
-
-
+/* ОТКЛЮЧИЛ */
+.project-links {
+    display: none !important;
+}
+/* Анимации */
 .contact-form-main .form-group {
     opacity: 0;
     transform: translateY(20px);
@@ -1496,4 +1307,677 @@ input[type="range"]::-moz-range-thumb {
         opacity: 1;
         transform: translateY(0);
     }
+}
+/* ВОЗВРАЩАЕМ ГЛАВНУЮ СТРАНИЦУ К ИСХОДНОМУ СОСТОЯНИЮ */
+.projects-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки как было */
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.mini-project-card {
+    background: var(--surface-light);
+    padding: 1.5rem 1rem; /* Исходный padding */
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+    min-height: auto; /* Убираем фиксированную высоту */
+    display: block; /* Убираем flex */
+}
+
+.project-image-mini {
+    width: 100%;
+    height: 80px; /* Исходная высота */
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: var(--surface-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ИЗМЕНЯЕМ ТОЛЬКО СТРАНИЦУ ПРОЕКТОВ (projects.html) */
+.projects-page .projects-grid-full {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 проекта в ряд */
+    gap: 2rem;
+}
+
+.projects-page .project-card-full {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--border);
+    min-height: 400px; /* Увеличиваем высоту карточек */
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-page .project-image {
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.projects-page .project-info {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.projects-page .project-info h3 {
+    font-size: 1.5rem; /* Увеличиваем шрифт */
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.projects-page .project-description {
+    color: var(--text-secondary);
+    font-size: 1rem; /* Увеличиваем шрифт */
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* ДНЕВНИК - растягиваем на весь экран */
+.diary-page {
+    padding: 2rem 0 4rem;
+    background: var(--surface);
+    min-height: calc(100vh - 200px);
+    width: 100%;
+}
+
+.diary-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Одна колонка на весь экран */
+    gap: 3rem;
+    align-items: start;
+    width: 100%;
+}
+
+.diary-section {
+    background: var(--surface-light);
+    padding: 2.5rem; /* Увеличили padding */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    width: 100%;
+}
+
+/* Увеличиваем секции прогресса */
+.progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Увеличили gap */
+    margin-bottom: 2rem;
+}
+
+.progress-item {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem; /* Увеличили padding */
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+/* КОНТАКТЫ - растягиваем на весь экран */
+.contacts-page {
+    padding: 2rem 0 4rem;
+    background: var(--surface);
+    min-height: calc(100vh - 200px);
+    width: 100%;
+}
+
+.contacts-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Одна колонка на весь экран */
+    gap: 3rem;
+    align-items: start;
+    width: 100%;
+}
+
+.contact-form-section,
+.contact-info-section {
+    background: var(--surface-light);
+    padding: 3rem; /* Увеличили padding */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    width: 100%;
+}
+
+/* Увеличиваем форму контактов */
+.contact-form-section h2 {
+    font-size: 2.5rem; /* Увеличили шрифт */
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+}
+
+.contact-form-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Увеличили gap */
+}
+
+.contacts-page .form-group input,
+.contacts-page .form-group textarea {
+    padding: 1rem; /* Увеличили padding */
+    font-size: 1.1rem; /* Увеличили шрифт */
+}
+
+/* Увеличиваем контактные элементы */
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Увеличили gap */
+    margin-bottom: 2.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Увеличили gap */
+    padding: 1.5rem; /* Увеличили padding */
+    background: var(--surface);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.contact-icon {
+    font-size: 2rem; /* Увеличили иконки */
+    width: 60px; /* Увеличили размер */
+    height: 60px; /* Увеличили размер */
+}
+
+/* Адаптивность */
+@media (max-width: 968px) {
+    .projects-page .projects-grid-full {
+        grid-template-columns: 1fr; /* На планшетах одна колонка */
+    }
+}
+
+@media (max-width: 768px) {
+    .diary-section,
+    .contact-form-section,
+    .contact-info-section {
+        padding: 1.5rem;
+    }
+    
+    .contact-form-section h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .contact-icon {
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .diary-section,
+    .contact-form-section,
+    .contact-info-section {
+        padding: 1rem;
+    }
+    
+    .contact-form-section h2 {
+        font-size: 1.75rem;
+    }
+}
+/* ГЛАВНАЯ СТРАНИЦА - вертикальное расположение навыков и проектов */
+.content-sections .sections-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Растягиваем обе карточки на всю ширину */
+.content-sections .section-card {
+    width: 100%;
+}
+
+/* Убираем растягивание кнопок на главной */
+.hero-buttons .btn,
+.content-sections .btn {
+    width: auto;
+}
+
+/* Кнопка "Все проекты" не должна растягиваться */
+.view-all-link {
+    display: inline-block;
+    width: auto;
+}
+
+/* Кнопки в модальных окнах не должны растягиваться */
+.modal-footer .btn {
+    width: auto;
+    min-width: 120px;
+}
+
+/* Кнопка "Подробнее" в проектах на главной не должна растягиваться */
+.content-sections .btn-view-details {
+    width: auto;
+    display: inline-flex;
+    margin: 0 auto;
+}
+
+/* Увеличиваем карточки для лучшего заполнения пространства */
+.content-sections .section-card {
+    padding: 2.5rem;
+}
+
+/* Улучшаем отображение навыков */
+.content-sections .skill-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 60px;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.content-sections .skill-name {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.content-sections .skill-percent {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Улучшаем отображение проектов */
+.content-sections .projects-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.content-sections .mini-project-card {
+    background: var(--surface-light);
+    padding: 1.5rem 1rem;
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.content-sections .project-image-mini {
+    width: 100%;
+    height: 80px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    background: var(--surface-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-sections .project-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.content-sections .mini-project-card h4 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.content-sections .mini-project-card p {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+/* Увеличиваем заголовки секций */
+.content-sections .section-header h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Адаптивность для главной страницы */
+@media (max-width: 968px) {
+    .content-sections .projects-mini-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .content-sections .sections-grid {
+        gap: 2rem;
+    }
+    
+    .content-sections .section-card {
+        padding: 2rem;
+    }
+    
+    .content-sections .projects-mini-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .content-sections .skill-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .content-sections .section-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    /* На мобильных кнопки могут занимать всю ширину */
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-sections .section-card {
+        padding: 1.5rem;
+    }
+}
+
+/* ОБЩИЕ СТИЛИ ДЛЯ КНОПОК (чтобы не растягивались) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 0.875rem;
+    width: auto; /* Важно: не растягивать по умолчанию */
+    justify-content: center;
+}
+
+/* Кнопки в модальных окнах */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.modal-footer .btn {
+    min-width: 120px;
+}
+
+/* Кнопка отправки сообщения в контактах */
+#sendMessage {
+    width: auto;
+    min-width: 200px;
+}
+
+/* Кнопки в формах дневника */
+.course-form .btn-primary,
+.progress-form .btn-primary {
+    width: auto;
+    align-self: flex-start;
+}
+/* КНОПКА "ОТПРАВИТЬ СООБЩЕНИЕ" в контактах */
+.btn-submit {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.btn-submit:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* КНОПКА "СОХРАНИТЬ КУРС" в дневнике */
+#saveCourse {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#saveCourse:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* КНОПКА "ПОДРОБНЕЕ" в проектах */
+.btn-view-details {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-block !important;
+}
+
+.btn-view-details:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* КНОПКА "ДОБАВИТЬ КУРС" которая создается динамически в дневнике */
+.btn-outline {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-block !important;
+}
+
+.btn-outline:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+/* КНОПКА "ОТПРАВИТЬ СООБЩЕНИЕ" в контактах */
+.btn-submit {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-block !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+}
+
+.btn-submit:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* КНОПКА "СОХРАНИТЬ КУРС" в дневнике */
+#saveCourse {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-block !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+}
+
+#saveCourse:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* КНОПКА "ПОДРОБНЕЕ" в проектах */
+.btn-view-details {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-block !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+}
+
+.btn-view-details:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* КНОПКА "ДОБАВИТЬ КУРС" которая создается динамически в дневнике */
+.btn-outline {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-block !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+}
+
+.btn-outline:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Убираем растягивание на всю ширину в формах */
+.contact-form-main,
+.progress-form,
+.course-form {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
+/* Убираем ширину 100% у кнопок в модальных окнах */
+.modal-footer {
+    justify-content: flex-start !important;
+}
+
+.modal-footer .btn {
+    width: auto !important;
+}
+/* ПОЛЯ ФОРМЫ НА ВСЮ ШИРИНУ */
+.contact-form-main .form-group {
+    width: 100% !important;
+}
+
+.contact-form-main input,
+.contact-form-main textarea {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* КНОПКА "ОТПРАВИТЬ СООБЩЕНИЕ" - маленькая слева */
+.btn-submit {
+    background: #8b5cf6 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: auto !important;
+    display: inline-block !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+}
+
+.btn-submit:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
 }

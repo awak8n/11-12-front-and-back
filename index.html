@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио - Главная</title>
+    <title>Главная</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -13,8 +13,7 @@
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
-                    <div class="logo-icon">💼</div>
-                    <h1>Левашев Егор</h1>
+                    <h1>Левашев Егор "awak8n"</h1>
                 </div>
                 <nav class="nav">
                     <ul class="nav-list">
@@ -44,11 +43,8 @@
                         <p class="hero-description">Увлекаюсь веб-разработкой и создаю современные цифровые решения</p>
                         <div class="hero-buttons">
                             <a href="assets/resume.pdf" download class="btn btn-primary">
-                                📄 Скачать резюме
+                                Скачать резюме
                             </a>
-                            <button class="btn btn-secondary" id="uploadResumeBtn">
-                                📤 Загрузить резюме
-                            </button>
                         </div>
                     </div>
                     <div class="hero-image">
@@ -117,17 +113,23 @@
                         </div>
                         <div class="projects-mini-grid">
                             <div class="mini-project-card">
-                                <div class="project-number">П1</div>
+                                <div class="project-image-mini">
+                                    <img src="images/fns_1.jpg" alt="Личный сайт" class="project-thumbnail">
+                                </div>
                                 <h4>Личный сайт</h4>
                                 <p>HTML, CSS</p>
                             </div>
                             <div class="mini-project-card">
-                                <div class="project-number">П2</div>
+                                <div class="project-image-mini">
+                                    <img src="images/sample-todo-app.png" alt="Todo App" class="project-thumbnail">
+                                </div>
                                 <h4>Todo App</h4>
                                 <p>JavaScript</p>
                             </div>
                             <div class="mini-project-card">
-                                <div class="project-number">П3</div>
+                                <div class="project-image-mini">
+                                    <img src="images/c67ee31b0898a987bcbce5a2086ec2db.jpg" alt="Интернет-магазин" class="project-thumbnail">
+                                </div>
                                 <h4>Интернет-магазин</h4>
                                 <p>React</p>
                             </div>
@@ -144,39 +146,8 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 awak8n store. Все права защищены.</p>
-            <div class="footer-links">
-                <a href="mailto:student@edu.ru">📧 student@edu.ru</a>
-                <a href="https://github.com/username">🐙 GitHub: awak8n</a>
-                <span>🏠 Москва, Россия</span>
-            </div>
         </div>
     </footer>
-
-    
-    <div class="modal" id="resumeModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Загрузка резюме</h3>
-                <button class="modal-close" id="closeResumeModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="upload-area" id="uploadArea">
-                    <div class="upload-icon">📄</div>
-                    <p>Перетащите файл сюда или нажмите для выбора</p>
-                    <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" style="display: none;">
-                    <button class="btn btn-outline" id="selectFileBtn">Выбрать файл</button>
-                </div>
-                <div class="upload-info">
-                    <p>Поддерживаемые форматы: PDF, DOC, DOCX</p>
-                    <p>Максимальный размер: 5MB</p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="cancelUpload">Отмена</button>
-                <button class="btn btn-primary" id="confirmUpload" disabled>Загрузить</button>
-            </div>
-        </div>
-    </div>
 
     
     <div class="modal" id="contactModal">
@@ -205,3 +176,9 @@
                 <button class="btn btn-secondary" id="cancelContact">Отмена</button>
                 <button class="btn btn-primary" id="sendMessage">Отправить сообщение</button>
             </div>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
