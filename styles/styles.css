@@ -1981,3 +1981,46 @@ input[type="range"]::-moz-range-thumb {
     transform: translateY(-1px) !important;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
 }
+/* Кнопки в модальном окне проектов */
+.project-links {
+    display: flex !important;
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+    flex-wrap: wrap !important;
+}
+
+.project-links .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.project-links .btn-primary {
+    background: #8b5cf6 !important;
+    color: white !important;
+}
+
+.project-links .btn-primary:hover {
+    background: #7c3aed !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5) !important;
+}
+
+.project-links .btn-outline {
+    background: transparent !important;
+    color: #8b5cf6 !important;
+    border: 2px solid #8b5cf6 !important;
+}
+
+.project-links .btn-outline:hover {
+    background: #8b5cf6 !important;
+    color: white !important;
+}

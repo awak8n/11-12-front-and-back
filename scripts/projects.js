@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Визуально привлекательные анимации и эффекты"
             ],
             liveLink: "https://example.com/project1",
-            sourceLink: "https://github.com/username/project1",
+            sourceLink: "https://github.com/awak8n/11-12-front-and-back",
             images: ["fns_1.jpg",]
         },
         2: {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Адаптивный интерфейс"
             ],
             liveLink: "https://example.com/project2",
-            sourceLink: "https://github.com/username/project2",
+            sourceLink: "https://github.com/awak8n/11-12-front-and-back",
             images: ["sample-todo-app.png", ]
         },
         3: {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Адаптивный дизайн"
             ],
             liveLink: "https://example.com/project3",
-            sourceLink: "https://github.com/username/project3",
+            sourceLink: "https://github.com/awak8n/11-12-front-and-back",
             images: ["c67ee31b0898a987bcbce5a2086ec2db.jpg"]
         },
         4: {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Совместимость с любым браузером"
             ],
             liveLink: "https://example.com/project4",
-            sourceLink: "https://github.com/username/project4",
+            sourceLink: "https://github.com/awak8n/11-12-front-and-back",
             images: ["41a95a177155071.64d18b45f1484.png"]
         },
         5: {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Быстрая работа и плавные анимации"
             ],
             liveLink: "https://example.com/project5",
-            sourceLink: "https://github.com/username/project5",
+            sourceLink: "https://github.com/awak8n/11-12-front-and-back",
             images: ["1693c1159858995.63a763a7132cd.jpg"]
         },
         6: {
@@ -93,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Таблица лидеров для соревнований",
                 "Достижения и награды"
             ],
-            liveLink: "https://example.com/project6",
-            sourceLink: "https://github.com/username/project6",
+            liveLink: "https://example.com",
+            sourceLink: "https://github.com/awak8n/11-12-front-and-back",
             images: ["чат.jpg"]
         }
     };
@@ -107,14 +107,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalDate = document.getElementById('modalProjectDate');
     const modalDescription = document.getElementById('modalProjectDescription');
     const modalFeatures = document.getElementById('modalProjectFeatures');
-    const modalLiveLink = document.getElementById('modalLiveLink');
-    const modalSourceLink = document.getElementById('modalSourceLink');
     const modalMainImage = document.getElementById('modalMainImage');
 
     
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card-full');
 
+    
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             
@@ -166,12 +165,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 
-                modalLiveLink.href = project.liveLink;
-                modalSourceLink.href = project.sourceLink;
-                
-                
                 modalMainImage.src = `../images/${project.images[0]}`;
                 modalMainImage.alt = project.title;
+                
+                
+                const projectLinks = document.querySelector('.project-links');
+                projectLinks.innerHTML = '';
+                
+                
+                if (project.liveLink && project.liveLink !== '#') {
+                    const liveBtn = document.createElement('a');
+                    liveBtn.href = project.liveLink;
+                    liveBtn.target = '_blank';
+                    liveBtn.rel = 'noopener noreferrer';
+                    liveBtn.className = 'btn btn-primary';
+                    liveBtn.innerHTML = 'Рабочая версия';
+                    projectLinks.appendChild(liveBtn);
+                }
+                
+                
+                if (project.sourceLink && project.sourceLink !== '#') {
+                    const sourceBtn = document.createElement('a');
+                    sourceBtn.href = project.sourceLink;
+                    sourceBtn.target = '_blank';
+                    sourceBtn.rel = 'noopener noreferrer';
+                    sourceBtn.className = 'btn btn-outline';
+                    sourceBtn.innerHTML = 'Исходный код';
+                    projectLinks.appendChild(sourceBtn);
+                }
                 
                 
                 projectModal.classList.add('active');
