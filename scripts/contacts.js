@@ -309,3 +309,111 @@ document.addEventListener('DOMContentLoaded', function() {
     
     loadDraft();
 });
+// Валидация формы
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactFormMain');
+    const nameInput = document.getElementById('contactName');
+    const messageInput = document.getElementById('contactMessage');
+    const nameError = document.getElementById('nameError');
+    const messageError = document.getElementById('messageError');
+    const successModal = document.getElementById('successModal');
+
+    // Скрыть сообщения об ошибках по умолчанию
+    nameError.style.display = 'none';
+    messageError.style.display = 'none';
+
+    // Валидация в реальном времени
+    nameInput.addEventListener('input', function() {
+        validateName();
+    });
+
+    messageInput.addEventListener('input', function() {
+        validateMessage();
+    });
+
+    // Функции валидации
+    function validateName() {
+        const name = nameInput.value.trim();
+        const nameRegex = /^[A-Za-zА-Яа-яЁё\s]{4,}$/;
+        
+        if (name.length < 4) {
+            showError(nameError, 'Имя должно содержать минимум 4 символа');
+            return false;
+        } else if (!nameRegex.test(name)) {
+            showError(nameError, 'Имя может содержать только буквы и пробелы');
+            return false;
+        } else {
+            hideError(nameError);
+            return true;
+        }
+    }
+
+    function validateMessage() {
+        const message = messageInput.value.trim();
+        
+        if (message.length < 10) {
+            showError(messageError, `Сообщение слишком короткое. Осталось символов: ${10 - message.length}`);
+            return false;
+        } else {
+            hideError(messageError);
+            return true;
+        }
+    }
+
+    // Обработка отправки формы
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const isNameValid = validateName();
+        const isMessageValid = validateMessage();
+        
+        if (isNameValid && isMessageValid) {
+            // Здесь будет отправка на сервер
+            console.log('Форма валидна, отправляем данные...');
+            
+            // Показываем модальное окно
+            successModal.style.display = 'block';
+            
+            // Сбрасываем форму
+            form.reset();
+            hideError(nameError);
+            hideError(messageError);
+        } else {
+            // Фокусируемся на первом невалидном поле
+            if (!isNameValid) {
+                nameInput.focus();
+            } else if (!isMessageValid) {
+                messageInput.focus();
+            }
+        }
+    });
+
+    // Вспомогательные функции
+    function showError(errorElement, message) {
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+        errorElement.style.color = '#dc2626';
+        errorElement.previousElementSibling.style.borderColor = '#dc2626';
+    }
+
+    function hideError(errorElement) {
+        errorElement.style.display = 'none';
+        errorElement.previousElementSibling.style.borderColor = '#d1d5db';
+    }
+
+    // Закрытие модального окна
+    document.getElementById('closeSuccessModal').addEventListener('click', function() {
+        successModal.style.display = 'none';
+    });
+
+    document.getElementById('closeSuccess').addEventListener('click', function() {
+        successModal.style.display = 'none';
+    });
+
+    // Закрытие по клику вне модального окна
+    window.addEventListener('click', function(event) {
+        if (event.target === successModal) {
+            successModal.style.display = 'none';
+        }
+    });
+});

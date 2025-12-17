@@ -2024,3 +2024,71 @@ input[type="range"]::-moz-range-thumb {
     background: #8b5cf6 !important;
     color: white !important;
 }
+/* Улучшение фокуса */
+:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* Для клавиатурной навигации */
+:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+/* Сообщения об ошибках */
+.error-message {
+    display: none;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Валидные и невалидные поля */
+input:invalid:not(:focus):not(:placeholder-shown),
+textarea:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #dc2626;
+}
+
+input:valid:not(:focus):not(:placeholder-shown),
+textarea:valid:not(:focus):not(:placeholder-shown) {
+    border-color: #16a34a;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    max-width: 500px;
+    animation: modalFade 0.3s;
+}
+
+@keyframes modalFade {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .skip-link:focus {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+    
+    .modal-content {
+        margin: 20% 1rem;
+        width: calc(100% - 2rem);
+    }
+}

@@ -6,8 +6,179 @@
     <title>Проекты</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Стили для ссылки-пропуска */
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -100px; /* Скрыта за пределами экрана */
+            z-index: 10000;
+            padding: .5rem .75rem;
+            background: #111;
+            color: #fff;
+            border-radius: .5rem;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: top 0.3s ease;
+        }
+        
+        /* Показывать при фокусе */
+        .skip-link:focus {
+            top: 1rem;
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Для клавиатурной навигации */
+        .skip-link:focus-visible {
+            top: 1rem;
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Улучшенный фокус для всех элементов */
+        :focus-visible {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Увеличиваем область клика для мобильных */
+        @media (pointer: coarse) {
+            a, button, .nav__link, .filter-btn, .btn-view-details {
+                min-height: 44px;
+                min-width: 44px;
+                padding: .75rem 1rem;
+            }
+        }
+        
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalFade 0.3s;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Для скринридеров - скрыть визуально, но оставить доступным */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* Улучшенные стили для фильтров */
+        .filter-btn {
+            position: relative;
+        }
+        
+        .filter-btn.active {
+            font-weight: bold;
+        }
+        
+        .filter-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #2563eb;
+        }
+        
+        /* Улучшенные стили для кнопок проектов */
+        .btn-view-details {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view-details:hover,
+        .btn-view-details:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        
+        /* Для мобильных устройств */
+        @media (max-width: 768px) {
+            .skip-link:focus {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+            
+            .modal-content {
+                margin: 10% 1rem;
+                width: calc(100% - 2rem);
+            }
+            
+            .project-filters {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                min-width: 70px;
+            }
+        }
+        
+        /* Доступность для изображений */
+        .project-image {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card-full:hover .project-image img,
+        .project-card-full:focus-within .project-image img {
+            transform: scale(1.05);
+        }
+        
+        /* Улучшение контрастности */
+        .project-tech {
+            color: #4b5563;
+            font-weight: 500;
+        }
+        
+        .project-description {
+            color: #374151;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
+    <!-- ССЫЛКА-ПРОПУСК - ДОБАВЛЯЕТСЯ ПЕРВОЙ -->
+    <a class="skip-link" href="#main-content">
+        Перейти к основному содержимому
+    </a>
     
     <header class="header">
         <div class="container">
@@ -15,15 +186,15 @@
                 <div class="logo">
                     <h1>Левашев Егор "awak8n"</h1>
                 </div>
-                <nav class="nav">
+                <nav class="nav" aria-label="Основная навигация">
                     <ul class="nav-list">
                         <li><a href="../index.html" class="nav-link">Главная</a></li>
-                        <li><a href="projects.html" class="nav-link active">Проекты</a></li>
+                        <li><a href="projects.html" class="nav-link active" aria-current="page">Проекты</a></li>
                         <li><a href="diary.html" class="nav-link">Дневник</a></li>
                         <li><a href="contacts.html" class="nav-link">Контакты</a></li>
                     </ul>
                 </nav>
-                <div class="mobile-menu-btn">
+                <div class="mobile-menu-btn" aria-label="Открыть меню" role="button" tabindex="0">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -32,96 +203,118 @@
         </div>
     </header>
 
-    <main>
+    <!-- ОСНОВНОЙ КОНТЕНТ - ДОБАВЛЯЕМ ID -->
+    <main id="main-content">
         
-        <section class="projects-page">
+        <section class="projects-page" aria-labelledby="projects-title">
             <div class="container">
+                <h1 id="projects-title" class="visually-hidden">Мои проекты</h1>
                 <div class="page-header">
                     <h2>Демонстрация адаптивных изображений</h2>
-                    <div class="project-filters">
-                        <button class="filter-btn active" data-filter="all">Все</button>
-                        <button class="filter-btn" data-filter="html">HTML</button>
-                        <button class="filter-btn" data-filter="js">JS</button>
-                        <button class="filter-btn" data-filter="react">React</button>
+                    <div class="project-filters" role="group" aria-label="Фильтры проектов">
+                        <button class="filter-btn active" data-filter="all" aria-pressed="true">
+                            Все
+                        </button>
+                        <button class="filter-btn" data-filter="html" aria-pressed="false">
+                            HTML
+                        </button>
+                        <button class="filter-btn" data-filter="js" aria-pressed="false">
+                            JS
+                        </button>
+                        <button class="filter-btn" data-filter="react" aria-pressed="false">
+                            React
+                        </button>
                     </div>
                 </div>
 
-                <div class="projects-grid-full">
+                <div class="projects-grid-full" role="list" aria-label="Список проектов">
                     
-                    <div class="project-card-full" data-category="html">
+                    <div class="project-card-full" data-category="html" role="listitem">
                         <div class="project-image">
-                            <img src="../images/fns_1.jpg" alt="Личный сайт" class="student-photo">
+                            <img src="../images/fns_1.jpg" alt="Скриншот личного сайта - чистая минималистичная верстка" class="student-photo">
                         </div>
                         <div class="project-info">
                             <h3>Личный сайт</h3>
                             <p class="project-tech">HTML, CSS</p>
                             <p class="project-description">Личный сайт с проработанным дизайном, большим набором настроек</p>
-                            <button class="btn-view-details" data-project="1">Подробнее</button>
+                            <button class="btn-view-details" data-project="1" aria-label="Подробнее о проекте 'Личный сайт'">
+                                Подробнее
+                            </button>
                         </div>
                     </div>
 
                     
-                    <div class="project-card-full" data-category="js">
+                    <div class="project-card-full" data-category="js" role="listitem">
                         <div class="project-image">
-                            <img src="../images/sample-todo-app.png" alt="Todo-приложение" class="student-photo">
+                            <img src="../images/sample-todo-app.png" alt="Скриншот Todo-приложения - интерфейс управления задачами" class="student-photo">
                         </div>
                         <div class="project-info">
                             <h3>Todo-приложение</h3>
                             <p class="project-tech">JavaScript</p>
                             <p class="project-description">Интерактивное приложение для управления задачами с локальным хранением данных</p>
-                            <button class="btn-view-details" data-project="2">Подробнее</button>
+                            <button class="btn-view-details" data-project="2" aria-label="Подробнее о проекте 'Todo-приложение'">
+                                Подробнее
+                            </button>
                         </div>
                     </div>
 
                     
-                    <div class="project-card-full" data-category="react">
+                    <div class="project-card-full" data-category="react" role="listitem">
                         <div class="project-image">
-                            <img src="../images/c67ee31b0898a987bcbce5a2086ec2db.jpg" alt="Интернет-магазин" class="student-photo">
+                            <img src="../images/c67ee31b0898a987bcbce5a2086ec2db.jpg" alt="Скриншот интернет-магазина - каталог товаров с фильтрами" class="student-photo">
                         </div>
                         <div class="project-info">
                             <h3>Интернет-магазин</h3>
                             <p class="project-tech">React</p>
                             <p class="project-description">Полнофункциональный онлайн-магазин с корзиной покупок и системой заказов</p>
-                            <button class="btn-view-details" data-project="3">Подробнее</button>
+                            <button class="btn-view-details" data-project="3" aria-label="Подробнее о проекте 'Интернет-магазин'">
+                                Подробнее
+                            </button>
                         </div>
                     </div>
 
                     
-                    <div class="project-card-full" data-category="html">
+                    <div class="project-card-full" data-category="html" role="listitem">
                         <div class="project-image">
-                            <img src="../images/41a95a177155071.64d18b45f1484.png" alt="Портфолио" class="student-photo">
+                            <img src="../images/41a95a177155071.64d18b45f1484.png" alt="Скриншот портфолио на Bootstrap - адаптивный дизайн" class="student-photo">
                         </div>
                         <div class="project-info">
                             <h3>Портфолио</h3>
                             <p class="project-tech">Bootstrap</p>
                             <p class="project-description">Портфолио сделанное с использованием фреймворка Bootstrap</p>
-                            <button class="btn-view-details" data-project="4">Подробнее</button>
+                            <button class="btn-view-details" data-project="4" aria-label="Подробнее о проекте 'Портфолио'">
+                                Подробнее
+                            </button>
                         </div>
                     </div>
 
                     
-                    <div class="project-card-full" data-category="js">
+                    <div class="project-card-full" data-category="js" role="listitem">
                         <div class="project-image">
-                            <img src="../images/1693c1159858995.63a763a7132cd.jpg" alt="Приложение для тренировок" class="student-photo">
+                            <img src="../images/1693c1159858995.63a763a7132cd.jpg" alt="Скриншот приложения для тренировок - план упражнений" class="student-photo">
                         </div>
                         <div class="project-info">
                             <h3>Приложение для тренировок</h3>
                             <p class="project-tech">JavaScript</p>
                             <p class="project-description">Приложение для просмотра плана тренировки</p>
-                            <button class="btn-view-details" data-project="5">Подробнее</button>
+                            <button class="btn-view-details" data-project="5" aria-label="Подробнее о проекте 'Приложение для тренировок'">
+                                Подробнее
+                            </button>
                         </div>
                     </div>
 
                     
-                    <div class="project-card-full" data-category="react">
+                    <div class="project-card-full" data-category="react" role="listitem">
                         <div class="project-image">
-                            <img src="../images/чат.jpg" alt="Браузерная игра" class="student-photo">
+                            <img src="../images/чат.jpg" alt="Скриншот браузерной игры - игровой интерфейс" class="student-photo">
                         </div>
                         <div class="project-info">
                             <h3>Браузерная игра</h3>
                             <p class="project-tech">React</p>
                             <p class="project-description">Интересная игра в браузере</p>
-                            <button class="btn-view-details" data-project="6">Подробнее</button>
+                            <button class="btn-view-details" data-project="6" aria-label="Подробнее о проекте 'Браузерная игра'">
+                                Подробнее
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -129,7 +322,7 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p>&copy; 2025 awak8n store. Все права защищены.</p>
         </div>
@@ -137,16 +330,16 @@
 
     
     <div class="modal" id="projectModal">
-        <div class="modal-content project-modal-content">
+        <div class="modal-content project-modal-content" role="dialog" aria-labelledby="modalProjectTitle" aria-modal="true">
             <div class="modal-header">
                 <h3 id="modalProjectTitle">Название проекта</h3>
-                <button class="modal-close" id="closeProjectModal">&times;</button>
+                <button class="modal-close" id="closeProjectModal" aria-label="Закрыть окно">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="project-modal-grid">
                     <div class="project-modal-images">
                         <div class="main-image">
-                            <img id="modalMainImage" src="" alt="Главное изображение проекта">
+                            <img id="modalMainImage" src="" alt="" class="modal-project-img">
                         </div>
                     </div>
                     <div class="project-modal-info">
@@ -160,17 +353,17 @@
                         </div>
                         <div class="project-features">
                             <h4>Особенности</h4>
-                            <ul id="modalProjectFeatures">
+                            <ul id="modalProjectFeatures" role="list" aria-label="Особенности проекта">
                                 <li>Адаптивный дизайн</li>
                                 <li>Современный интерфейс</li>
                                 <li>Оптимизация производительности</li>
                             </ul>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-primary" id="modalLiveLink" target="_blank"> 
+                            <a href="#" class="btn btn-primary" id="modalLiveLink" target="_blank" rel="noopener noreferrer"> 
                                 Живая версия
                             </a>
-                            <a href="#" class="btn btn-outline" id="modalSourceLink" target="_blank">
+                            <a href="#" class="btn btn-outline" id="modalSourceLink" target="_blank" rel="noopener noreferrer">
                                 Исходный код
                             </a>
                         </div>
@@ -181,5 +374,296 @@
     </div>
 
     <script src="../scripts/projects.js"></script>
+    <script>
+        // Дополнительный скрипт для доступности
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectModal = document.getElementById('projectModal');
+            const closeProjectModal = document.getElementById('closeProjectModal');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card-full');
+            const viewDetailButtons = document.querySelectorAll('.btn-view-details');
+            
+            // Данные проектов для модального окна
+            const projectsData = {
+                1: {
+                    title: 'Личный сайт',
+                    category: 'HTML, CSS',
+                    date: '15-11-2025',
+                    description: 'Личный сайт с проработанным дизайном, большим набором настроек и адаптивной версткой для всех устройств.',
+                    features: [
+                        'Адаптивный дизайн для мобильных и десктопов',
+                        'Современный интерфейс с анимациями',
+                        'Оптимизация производительности',
+                        'Семантическая верстка'
+                    ],
+                    image: '../images/fns_1.jpg',
+                    liveLink: '#',
+                    sourceLink: '#',
+                    imageAlt: 'Полный скриншот личного сайта - главная страница с навигацией и контентом'
+                },
+                2: {
+                    title: 'Todo-приложение',
+                    category: 'JavaScript',
+                    date: '10-11-2025',
+                    description: 'Интерактивное приложение для управления задачами с локальным хранением данных, возможностью фильтрации и сортировки задач.',
+                    features: [
+                        'Локальное хранение данных (LocalStorage)',
+                        'Добавление, удаление и редактирование задач',
+                        'Фильтрация по статусу выполнения',
+                        'Темная и светлая темы'
+                    ],
+                    image: '../images/sample-todo-app.png',
+                    liveLink: '#',
+                    sourceLink: '#',
+                    imageAlt: 'Интерфейс Todo-приложения с списком задач и формой добавления'
+                },
+                3: {
+                    title: 'Интернет-магазин',
+                    category: 'React',
+                    date: '05-11-2025',
+                    description: 'Полнофункциональный онлайн-магазин с корзиной покупок, системой заказов и панелью администратора.',
+                    features: [
+                        'Корзина покупок с реальным обновлением',
+                        'Система фильтрации и поиска товаров',
+                        'Панель администратора для управления',
+                        'Интеграция с платежной системой'
+                    ],
+                    image: '../images/c67ee31b0898a987bcbce5a2086ec2db.jpg',
+                    liveLink: '#',
+                    sourceLink: '#',
+                    imageAlt: 'Главная страница интернет-магазина с каталогом товаров'
+                },
+                4: {
+                    title: 'Портфолио',
+                    category: 'Bootstrap',
+                    date: '01-11-2025',
+                    description: 'Портфолио, созданное с использованием фреймворка Bootstrap с акцентом на адаптивность и кроссбраузерную совместимость.',
+                    features: [
+                        'Адаптивная сетка Bootstrap',
+                        'Кроссбраузерная совместимость',
+                        'Оптимизация для мобильных устройств',
+                        'Быстрая загрузка страниц'
+                    ],
+                    image: '../images/41a95a177155071.64d18b45f1484.png',
+                    liveLink: '#',
+                    sourceLink: '#',
+                    imageAlt: 'Портфолио на Bootstrap с секциями проектов и навыков'
+                },
+                5: {
+                    title: 'Приложение для тренировок',
+                    category: 'JavaScript',
+                    date: '25-10-2025',
+                    description: 'Приложение для создания и отслеживания планов тренировок с таймером и статистикой прогресса.',
+                    features: [
+                        'Таймер тренировок с обратным отсчетом',
+                        'Создание и сохранение программ тренировок',
+                        'Отслеживание прогресса и статистики',
+                        'Адаптивный дизайн для использования в спортзале'
+                    ],
+                    image: '../images/1693c1159858995.63a763a7132cd.jpg',
+                    liveLink: '#',
+                    sourceLink: '#',
+                    imageAlt: 'Интерфейс приложения для тренировок с упражнениями и таймером'
+                },
+                6: {
+                    title: 'Браузерная игра',
+                    category: 'React',
+                    date: '20-10-2025',
+                    description: 'Увлекательная браузерная игра с современной графикой и многопользовательским режимом.',
+                    features: [
+                        'Реалтайм геймплей',
+                        'Многопользовательский режим',
+                        'Система достижений и лидерборд',
+                        'Адаптивная графика'
+                    ],
+                    image: '../images/чат.jpg',
+                    liveLink: '#',
+                    sourceLink: '#',
+                    imageAlt: 'Игровой интерфейс браузерной игры с персонажем и элементами управления'
+                }
+            };
+            
+            // Функции для работы с модальным окном
+            function openModal(modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+                // Блокируем скролл для остального контента
+            }
+            
+            function closeModal(modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+                // Возвращаем фокус на кнопку, которая открывала модальное окно
+                const lastFocusedButton = document.activeElement;
+                if (lastFocusedButton && lastFocusedButton.classList.contains('btn-view-details')) {
+                    setTimeout(() => lastFocusedButton.focus(), 100);
+                }
+            }
+            
+            // Открытие модального окна для проекта
+            viewDetailButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    const projectData = projectsData[projectId];
+                    
+                    if (projectData) {
+                        // Заполняем данные в модальном окне
+                        document.getElementById('modalProjectTitle').textContent = projectData.title;
+                        document.getElementById('modalProjectCategory').textContent = projectData.category;
+                        document.getElementById('modalProjectDate').textContent = projectData.date;
+                        document.getElementById('modalProjectDescription').textContent = projectData.description;
+                        
+                        // Обновляем изображение
+                        const modalImage = document.getElementById('modalMainImage');
+                        modalImage.src = projectData.image;
+                        modalImage.alt = projectData.imageAlt;
+                        
+                        // Обновляем список особенностей
+                        const featuresList = document.getElementById('modalProjectFeatures');
+                        featuresList.innerHTML = '';
+                        projectData.features.forEach(feature => {
+                            const li = document.createElement('li');
+                            li.textContent = feature;
+                            li.setAttribute('role', 'listitem');
+                            featuresList.appendChild(li);
+                        });
+                        
+                        // Обновляем ссылки
+                        document.getElementById('modalLiveLink').href = projectData.liveLink;
+                        document.getElementById('modalSourceLink').href = projectData.sourceLink;
+                        
+                        // Открываем модальное окно
+                        openModal(projectModal);
+                        
+                        // Фокусируемся на кнопке закрытия модального окна
+                        setTimeout(() => closeProjectModal.focus(), 100);
+                    }
+                });
+                
+                // Добавляем обработчик для клавиатуры
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+            
+            // Закрытие модального окна
+            closeProjectModal.addEventListener('click', function() {
+                closeModal(projectModal);
+            });
+            
+            // Закрытие по клику вне модального окна
+            window.addEventListener('click', function(event) {
+                if (event.target === projectModal) {
+                    closeModal(projectModal);
+                }
+            });
+            
+            // Закрытие по Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && projectModal.style.display === 'block') {
+                    closeModal(projectModal);
+                }
+            });
+            
+            // Фильтрация проектов
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Обновляем состояние кнопок
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-pressed', 'false');
+                    });
+                    this.classList.add('active');
+                    this.setAttribute('aria-pressed', 'true');
+                    
+                    // Фильтруем проекты
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            card.setAttribute('aria-hidden', 'false');
+                        } else {
+                            card.style.display = 'none';
+                            card.setAttribute('aria-hidden', 'true');
+                        }
+                    });
+                    
+                    // Обновляем информацию о количестве видимых проектов
+                    updateProjectCount(filter);
+                });
+                
+                // Добавляем обработчик для клавиатуры
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+            
+            // Функция для обновления информации о количестве проектов
+            function updateProjectCount(filter) {
+                const visibleProjects = filter === 'all' 
+                    ? projectCards.length 
+                    : document.querySelectorAll(`.project-card-full[data-category="${filter}"]`).length;
+                
+                // Можно добавить элемент для отображения количества, если нужно
+                // Например: document.getElementById('projectCount').textContent = `Показано проектов: ${visibleProjects}`;
+                
+                // Для скринридеров объявляем изменение
+                const announcement = document.createElement('div');
+                announcement.className = 'visually-hidden';
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.textContent = `Показано ${visibleProjects} проектов`;
+                document.body.appendChild(announcement);
+                
+                // Удаляем объявление после небольшой паузы
+                setTimeout(() => announcement.remove(), 1000);
+            }
+            
+            // Управление мобильным меню
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuBtn && nav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.setAttribute('aria-expanded', nav.classList.contains('active'));
+                    // Фокусируемся на первой ссылке при открытии меню
+                    if (nav.classList.contains('active')) {
+                        setTimeout(() => {
+                            const firstLink = nav.querySelector('.nav-link');
+                            if (firstLink) firstLink.focus();
+                        }, 100);
+                    }
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                // Закрытие меню по Escape
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        mobileMenuBtn.focus();
+                    }
+                });
+            }
+            
+            // Инициализация
+            updateProjectCount('all');
+        });
+    </script>
 </body>
 </html>

@@ -6,8 +6,128 @@
     <title>Контакты</title>
     <link rel="stylesheet" href="../styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Стили для ссылки-пропуска */
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -100px; /* Скрыта за пределами экрана */
+            z-index: 10000;
+            padding: .5rem .75rem;
+            background: #111;
+            color: #fff;
+            border-radius: .5rem;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: top 0.3s ease;
+        }
+        
+        /* Показывать при фокусе */
+        .skip-link:focus {
+            top: 1rem;
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Для клавиатурной навигации */
+        .skip-link:focus-visible {
+            top: 1rem;
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Улучшенный фокус для всех элементов */
+        :focus-visible {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Увеличиваем область клика для мобильных */
+        @media (pointer: coarse) {
+            a, button, .nav__link {
+                min-height: 44px;
+                min-width: 44px;
+                padding: .75rem 1rem;
+            }
+        }
+        
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            max-width: 500px;
+            animation: modalFade 0.3s;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Улучшенные доступные стили для ошибок */
+        .error-message {
+            display: none;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            color: #dc2626;
+        }
+        
+        /* Валидация полей */
+        input:invalid:not(:focus):not(:placeholder-shown),
+        textarea:invalid:not(:focus):not(:placeholder-shown) {
+            border-color: #dc2626;
+        }
+        
+        input:valid:not(:focus):not(:placeholder-shown),
+        textarea:valid:not(:focus):not(:placeholder-shown) {
+            border-color: #16a34a;
+        }
+        
+        /* Для мобильных устройств */
+        @media (max-width: 768px) {
+            .skip-link:focus {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+            
+            .modal-content {
+                margin: 20% 1rem;
+                width: calc(100% - 2rem);
+            }
+        }
+        
+        /* Для скринридеров - скрыть визуально, но оставить доступным */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
+    <!-- ССЫЛКА-ПРОПУСК - ДОБАВЛЯЕТСЯ ПЕРВОЙ -->
+    <a class="skip-link" href="#main-content">
+        Перейти к основному содержимому
+    </a>
     
     <header class="header">
         <div class="container">
@@ -15,7 +135,7 @@
                 <div class="logo">
                     <h1>Левашев Егор "awak8n"</h1>
                 </div>
-                <nav class="nav">
+                <nav class="nav" aria-label="Основная навигация">
                     <ul class="nav-list">
                         <li><a href="../index.html" class="nav-link">Главная</a></li>
                         <li><a href="projects.html" class="nav-link">Проекты</a></li>
@@ -23,7 +143,7 @@
                         <li><a href="contacts.html" class="nav-link active">Контакты</a></li>
                     </ul>
                 </nav>
-                <div class="mobile-menu-btn">
+                <div class="mobile-menu-btn" aria-label="Открыть меню" role="button" tabindex="0">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -32,29 +152,52 @@
         </div>
     </header>
 
-    <main>
+    <!-- ОСНОВНОЙ КОНТЕНТ - ДОБАВЛЯЕМ ID -->
+    <main id="main-content">
         
-        <section class="contacts-page">
+        <section class="contacts-page" aria-labelledby="contacts-title">
             <div class="container">
+                <h1 id="contacts-title" class="visually-hidden">Контакты</h1>
                 <div class="contacts-content">
                     
                     <div class="contact-form-section">
                         <h2>Свяжитесь со мной</h2>
-                        <form class="contact-form-main" id="contactFormMain">
+                        <form class="contact-form-main" id="contactFormMain" novalidate>
                             <div class="form-group">
                                 <label for="contactName">Имя:</label>
-                                <input type="text" id="contactName" name="name" placeholder="Введите ваше имя" required>
-                                <span class="error-message" id="nameError"></span>
+                                <input type="text" id="contactName" name="name" 
+                                       placeholder="Введите ваше имя" 
+                                       minlength="4" 
+                                       maxlength="50"
+                                       pattern="[A-Za-zА-Яа-яЁё\s]+"
+                                       title="Только буквы и пробелы"
+                                       required
+                                       aria-describedby="nameError">
+                                <span class="error-message" id="nameError" role="alert">
+                                    Имя должно содержать минимум 4 символа (только буквы)
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="contactEmail">Email:</label>
-                                <input type="email" id="contactEmail" name="email" placeholder="Введите ваш email" required>
-                                <span class="error-message" id="emailError"></span>
+                                <input type="email" id="contactEmail" name="email" 
+                                       placeholder="Введите ваш email" 
+                                       required
+                                       aria-describedby="emailError">
+                                <span class="error-message" id="emailError" role="alert">
+                                    Введите корректный email адрес
+                                </span>
                             </div>
                             <div class="form-group">
                                 <label for="contactMessage">Сообщение:</label>
-                                <textarea id="contactMessage" name="message" rows="5" placeholder="Введите ваше сообщение..." required></textarea>
-                                <span class="error-message" id="messageError"></span>
+                                <textarea id="contactMessage" name="message" rows="5" 
+                                          placeholder="Введите ваше сообщение..." 
+                                          minlength="10"
+                                          maxlength="1000"
+                                          required
+                                          aria-describedby="messageError"></textarea>
+                                <span class="error-message" id="messageError" role="alert">
+                                    Сообщение должно содержать минимум 10 символов
+                                </span>
                             </div>
                             <button type="submit" class="btn btn-primary btn-submit">
                                 Отправить сообщение
@@ -67,48 +210,50 @@
                         <h3>Контакты</h3>
                         <div class="contact-details">
                             <div class="contact-item">
-                                <div class="contact-icon">📪</div>
+                                <div class="contact-icon" role="img" aria-label="Почта">📪</div>
                                 <div class="contact-text">
                                     <strong>Email</strong>
                                     <p>student@edu.ru</p>
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <div class="contact-icon">🌌</div>
+                                <div class="contact-icon" role="img" aria-label="GitHub">🌌</div>
                                 <div class="contact-text">
                                     <strong>GitHub</strong>
                                     <p>awak8n</p>
                                 </div>
                             </div>
                             <div class="contact-item">
-                                <div class="contact-icon">📌</div>
+                                <div class="contact-icon" role="img" aria-label="Местоположение">📌</div>
                                 <div class="contact-text">
                                     <strong>Местоположение</strong>
                                     <p>Город, Страна</p>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p>&copy; 2025 awak8n store. Все права защищены.</p>
         </div>
     </footer>
 
     
+    <!-- Модальное окно с улучшенной валидацией -->
     <div class="modal" id="successModal">
-        <div class="modal-content">
+        <div class="modal-content" role="dialog" aria-labelledby="success-modal-title" aria-modal="true">
             <div class="modal-header">
-                <h3>Сообщение отправлено!</h3>
-                <button class="modal-close" id="closeSuccessModal">&times;</button>
+                <h3 id="success-modal-title">Сообщение отправлено!</h3>
+                <button class="modal-close" id="closeSuccessModal" aria-label="Закрыть окно">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="success-content">
-                    <div class="success-icon">✅</div>
+                    <div class="success-icon" role="img" aria-label="Успешно">✅</div>
                     <p>Ваше сообщение было успешно отправлено. Я свяжусь с вами в ближайшее время.</p>
                 </div>
             </div>
@@ -119,5 +264,177 @@
     </div>
 
     <script src="../scripts/contacts.js"></script>
+    <script>
+        // Дополнительный скрипт для валидации формы
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactFormMain');
+            const nameInput = document.getElementById('contactName');
+            const messageInput = document.getElementById('contactMessage');
+            const emailInput = document.getElementById('contactEmail');
+            const nameError = document.getElementById('nameError');
+            const messageError = document.getElementById('messageError');
+            const emailError = document.getElementById('emailError');
+            const successModal = document.getElementById('successModal');
+            
+            // Скрыть сообщения об ошибках по умолчанию
+            nameError.style.display = 'none';
+            messageError.style.display = 'none';
+            emailError.style.display = 'none';
+            
+            // Валидация в реальном времени
+            nameInput.addEventListener('input', function() {
+                validateName();
+            });
+            
+            messageInput.addEventListener('input', function() {
+                validateMessage();
+            });
+            
+            emailInput.addEventListener('input', function() {
+                validateEmail();
+            });
+            
+            // Функции валидации
+            function validateName() {
+                const name = nameInput.value.trim();
+                const nameRegex = /^[A-Za-zА-Яа-яЁё\s]{4,}$/;
+                
+                if (name.length < 4) {
+                    showError(nameError, 'Имя должно содержать минимум 4 символа');
+                    return false;
+                } else if (!nameRegex.test(name)) {
+                    showError(nameError, 'Имя может содержать только буквы и пробелы');
+                    return false;
+                } else {
+                    hideError(nameError);
+                    return true;
+                }
+            }
+            
+            function validateMessage() {
+                const message = messageInput.value.trim();
+                
+                if (message.length < 10) {
+                    showError(messageError, `Сообщение слишком короткое. Осталось символов: ${10 - message.length}`);
+                    return false;
+                } else {
+                    hideError(messageError);
+                    return true;
+                }
+            }
+            
+            function validateEmail() {
+                const email = emailInput.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (!emailRegex.test(email)) {
+                    showError(emailError, 'Введите корректный email адрес');
+                    return false;
+                } else {
+                    hideError(emailError);
+                    return true;
+                }
+            }
+            
+            // Обработка отправки формы
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const isNameValid = validateName();
+                const isMessageValid = validateMessage();
+                const isEmailValid = validateEmail();
+                
+                if (isNameValid && isMessageValid && isEmailValid) {
+                    // Здесь будет отправка на сервер
+                    console.log('Форма валидна, отправляем данные...');
+                    
+                    // Показываем модальное окно
+                    successModal.style.display = 'block';
+                    
+                    // Сбрасываем форму
+                    form.reset();
+                    hideError(nameError);
+                    hideError(messageError);
+                    hideError(emailError);
+                    
+                    // Возвращаем фокус на первую кнопку после закрытия модального окна
+                    document.getElementById('closeSuccess').focus();
+                } else {
+                    // Фокусируемся на первом невалидном поле
+                    if (!isNameValid) {
+                        nameInput.focus();
+                    } else if (!isEmailValid) {
+                        emailInput.focus();
+                    } else if (!isMessageValid) {
+                        messageInput.focus();
+                    }
+                }
+            });
+            
+            // Вспомогательные функции
+            function showError(errorElement, message) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                errorElement.previousElementSibling.style.borderColor = '#dc2626';
+                // Обновляем aria-invalid
+                errorElement.previousElementSibling.setAttribute('aria-invalid', 'true');
+            }
+            
+            function hideError(errorElement) {
+                errorElement.style.display = 'none';
+                errorElement.previousElementSibling.style.borderColor = '';
+                errorElement.previousElementSibling.setAttribute('aria-invalid', 'false');
+            }
+            
+            // Закрытие модального окна
+            document.getElementById('closeSuccessModal').addEventListener('click', function() {
+                successModal.style.display = 'none';
+                // Возвращаем фокус на кнопку отправки формы
+                document.querySelector('.btn-submit').focus();
+            });
+            
+            document.getElementById('closeSuccess').addEventListener('click', function() {
+                successModal.style.display = 'none';
+                // Возвращаем фокус на кнопку отправки формы
+                document.querySelector('.btn-submit').focus();
+            });
+            
+            // Закрытие по клику вне модального окна
+            window.addEventListener('click', function(event) {
+                if (event.target === successModal) {
+                    successModal.style.display = 'none';
+                    // Возвращаем фокус на кнопку отправки формы
+                    document.querySelector('.btn-submit').focus();
+                }
+            });
+            
+            // Закрытие модального окна по Escape
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && successModal.style.display === 'block') {
+                    successModal.style.display = 'none';
+                    document.querySelector('.btn-submit').focus();
+                }
+            });
+            
+            // Управление мобильным меню
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuBtn && nav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.setAttribute('aria-expanded', nav.classList.contains('active'));
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>

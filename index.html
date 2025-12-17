@@ -6,8 +6,115 @@
     <title>Главная</title>
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Стили для ссылки-пропуска */
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: -100px; /* Скрыта за пределами экрана */
+            z-index: 10000;
+            padding: .5rem .75rem;
+            background: #111;
+            color: #fff;
+            border-radius: .5rem;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: top 0.3s ease;
+        }
+        
+        /* Показывать при фокусе */
+        .skip-link:focus {
+            top: 1rem;
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Для клавиатурной навигации */
+        .skip-link:focus-visible {
+            top: 1rem;
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Улучшенный фокус для всех элементов */
+        :focus-visible {
+            outline: 3px solid #2563eb;
+            outline-offset: 2px;
+        }
+        
+        /* Увеличиваем область клика для мобильных */
+        @media (pointer: coarse) {
+            a, button, .nav__link {
+                min-height: 44px;
+                min-width: 44px;
+                padding: .75rem 1rem;
+            }
+        }
+        
+        /* Стили для модального окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            max-width: 500px;
+            animation: modalFade 0.3s;
+        }
+        
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Улучшенные доступные стили для ошибок */
+        .error-message {
+            display: none;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            color: #dc2626;
+        }
+        
+        /* Валидация полей */
+        input:invalid:not(:focus):not(:placeholder-shown),
+        textarea:invalid:not(:focus):not(:placeholder-shown) {
+            border-color: #dc2626;
+        }
+        
+        input:valid:not(:focus):not(:placeholder-shown),
+        textarea:valid:not(:focus):not(:placeholder-shown) {
+            border-color: #16a34a;
+        }
+        
+        /* Для мобильных устройств */
+        @media (max-width: 768px) {
+            .skip-link:focus {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
+            
+            .modal-content {
+                margin: 20% 1rem;
+                width: calc(100% - 2rem);
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- ССЫЛКА-ПРОПУСК - ДОБАВЛЯЕТСЯ ПЕРВОЙ -->
+    <a class="skip-link" href="#main-content">
+        Перейти к основному содержимому
+    </a>
     
     <header class="header">
         <div class="container">
@@ -15,7 +122,7 @@
                 <div class="logo">
                     <h1>Левашев Егор "awak8n"</h1>
                 </div>
-                <nav class="nav">
+                <nav class="nav" aria-label="Основная навигация">
                     <ul class="nav-list">
                         <li><a href="index.html" class="nav-link active">Главная</a></li>
                         <li><a href="pages/projects.html" class="nav-link">Проекты</a></li>
@@ -23,7 +130,7 @@
                         <li><a href="pages/contacts.html" class="nav-link">Контакты</a></li>
                     </ul>
                 </nav>
-                <div class="mobile-menu-btn">
+                <div class="mobile-menu-btn" aria-label="Открыть меню" role="button" tabindex="0">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -32,13 +139,14 @@
         </div>
     </header>
 
-    <main>
+    <!-- ОСНОВНОЙ КОНТЕНТ - ДОБАВЛЯЕМ ID -->
+    <main id="main-content">
         
-        <section class="hero">
+        <section class="hero" aria-labelledby="hero-title">
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
-                        <h2 class="hero-title">Привет! Я <span class="highlight">студент</span></h2>
+                        <h2 class="hero-title" id="hero-title">Привет! Я <span class="highlight">студент</span></h2>
                         <p class="hero-subtitle">группы <strong>ЭФБО-13-24</strong></p>
                         <p class="hero-description">Увлекаюсь веб-разработкой и создаю современные цифровые решения</p>
                         <div class="hero-buttons">
@@ -49,7 +157,7 @@
                     </div>
                     <div class="hero-image">
                         <div class="photo-container">
-                            <img src="images/фото студента.jpg" alt="Фото студента" class="student-photo">
+                            <img src="images/фото студента.jpg" alt="Фото студента Левашев Егор" class="student-photo">
                             <div class="photo-frame"></div>
                         </div>
                     </div>
@@ -58,46 +166,47 @@
         </section>
 
         
-        <section class="content-sections">
+        <section class="content-sections" aria-labelledby="skills-projects-title">
             <div class="container">
+                <h2 id="skills-projects-title" class="visually-hidden">Мои навыки и проекты</h2>
                 <div class="sections-grid">
                     
                     <div class="section-card">
                         <div class="section-header">
                             <h3>Мои навыки</h3>
                         </div>
-                        <div class="skills-list">
-                            <div class="skill-row">
+                        <div class="skills-list" role="list" aria-label="Список навыков">
+                            <div class="skill-row" role="listitem">
                                 <span class="skill-name">HTML/CSS</span>
-                                <div class="skill-progress">
-                                    <div class="progress-bar">
+                                <div class="skill-progress" aria-label="Уровень владения HTML/CSS: 90%">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                                         <div class="progress-fill" style="width: 90%"></div>
                                     </div>
                                 </div>
                                 <span class="skill-percent">90%</span>
                             </div>
-                            <div class="skill-row">
+                            <div class="skill-row" role="listitem">
                                 <span class="skill-name">JavaScript</span>
-                                <div class="skill-progress">
-                                    <div class="progress-bar">
+                                <div class="skill-progress" aria-label="Уровень владения JavaScript: 80%">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                                         <div class="progress-fill" style="width: 80%"></div>
                                     </div>
                                 </div>
                                 <span class="skill-percent">80%</span>
                             </div>
-                            <div class="skill-row">
+                            <div class="skill-row" role="listitem">
                                 <span class="skill-name">Bootstrap</span>
-                                <div class="skill-progress">
-                                    <div class="progress-bar">
+                                <div class="skill-progress" aria-label="Уровень владения Bootstrap: 85%">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                                         <div class="progress-fill" style="width: 85%"></div>
                                     </div>
                                 </div>
                                 <span class="skill-percent">85%</span>
                             </div>
-                            <div class="skill-row">
+                            <div class="skill-row" role="listitem">
                                 <span class="skill-name">React</span>
-                                <div class="skill-progress">
-                                    <div class="progress-bar">
+                                <div class="skill-progress" aria-label="Уровень владения React: 60%">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                                         <div class="progress-fill" style="width: 60%"></div>
                                     </div>
                                 </div>
@@ -111,24 +220,24 @@
                         <div class="section-header">
                             <h3>Лучшие проекты</h3>
                         </div>
-                        <div class="projects-mini-grid">
-                            <div class="mini-project-card">
+                        <div class="projects-mini-grid" role="list" aria-label="Список проектов">
+                            <div class="mini-project-card" role="listitem">
                                 <div class="project-image-mini">
-                                    <img src="images/fns_1.jpg" alt="Личный сайт" class="project-thumbnail">
+                                    <img src="images/fns_1.jpg" alt="Скриншот личного сайта" class="project-thumbnail">
                                 </div>
                                 <h4>Личный сайт</h4>
                                 <p>HTML, CSS</p>
                             </div>
-                            <div class="mini-project-card">
+                            <div class="mini-project-card" role="listitem">
                                 <div class="project-image-mini">
-                                    <img src="images/sample-todo-app.png" alt="Todo App" class="project-thumbnail">
+                                    <img src="images/sample-todo-app.png" alt="Скриншот приложения Todo App" class="project-thumbnail">
                                 </div>
                                 <h4>Todo App</h4>
                                 <p>JavaScript</p>
                             </div>
-                            <div class="mini-project-card">
+                            <div class="mini-project-card" role="listitem">
                                 <div class="project-image-mini">
-                                    <img src="images/c67ee31b0898a987bcbce5a2086ec2db.jpg" alt="Интернет-магазин" class="project-thumbnail">
+                                    <img src="images/c67ee31b0898a987bcbce5a2086ec2db.jpg" alt="Скриншот интернет-магазина" class="project-thumbnail">
                                 </div>
                                 <h4>Интернет-магазин</h4>
                                 <p>React</p>
@@ -143,7 +252,7 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p>&copy; 2025 awak8n store. Все права защищены.</p>
         </div>
@@ -151,24 +260,45 @@
 
     
     <div class="modal" id="contactModal">
-        <div class="modal-content">
+        <div class="modal-content" role="dialog" aria-labelledby="modal-title" aria-modal="true">
             <div class="modal-header">
-                <h3>Свяжитесь со мной</h3>
-                <button class="modal-close" id="closeContactModal">&times;</button>
+                <h3 id="modal-title">Свяжитесь со мной</h3>
+                <button class="modal-close" id="closeContactModal" aria-label="Закрыть окно">&times;</button>
             </div>
             <div class="modal-body">
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" novalidate>
                     <div class="form-group">
                         <label for="name">Имя:</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" 
+                               placeholder="Введите ваше имя"
+                               minlength="4"
+                               maxlength="50"
+                               pattern="[A-Za-zА-Яа-яЁё\s]+"
+                               title="Только буквы и пробелы"
+                               required>
+                        <span class="error-message" id="nameErrorModal">
+                            Имя должно содержать минимум 4 символа (только буквы)
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" 
+                               placeholder="Введите ваш email"
+                               required>
+                        <span class="error-message" id="emailErrorModal">
+                            Введите корректный email адрес
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="message">Сообщение:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <textarea id="message" name="message" rows="4" 
+                                  placeholder="Введите ваше сообщение..."
+                                  minlength="10"
+                                  maxlength="500"
+                                  required></textarea>
+                        <span class="error-message" id="messageErrorModal">
+                            Сообщение должно содержать минимум 10 символов
+                        </span>
                     </div>
                 </form>
             </div>
@@ -179,6 +309,165 @@
         </div>
     </div>
 
+    <!-- Модальное окно успеха -->
+    <div class="modal" id="successModal">
+        <div class="modal-content" role="dialog" aria-labelledby="success-title" aria-modal="true">
+            <div class="modal-header">
+                <h3 id="success-title">Сообщение отправлено!</h3>
+                <button class="modal-close" id="closeSuccessModal" aria-label="Закрыть окно">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-content">
+                    <div class="success-icon" role="img" aria-label="Успешно">✅</div>
+                    <p>Ваше сообщение было успешно отправлено. Я свяжусь с вами в ближайшее время.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="closeSuccess">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
     <script src="scripts/script.js"></script>
+    <script>
+        // Дополнительный скрипт для валидации формы
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactModal = document.getElementById('contactModal');
+            const successModal = document.getElementById('successModal');
+            const contactForm = document.getElementById('contactForm');
+            const nameInput = document.getElementById('name');
+            const messageInput = document.getElementById('message');
+            const nameErrorModal = document.getElementById('nameErrorModal');
+            const messageErrorModal = document.getElementById('messageErrorModal');
+            
+            // Скрыть сообщения об ошибках
+            if (nameErrorModal) nameErrorModal.style.display = 'none';
+            if (messageErrorModal) messageErrorModal.style.display = 'none';
+            
+            // Открытие модального окна контактов (если есть кнопка для этого)
+            const contactButtons = document.querySelectorAll('[data-open-contact]');
+            contactButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    contactModal.style.display = 'block';
+                });
+            });
+            
+            // Закрытие модальных окон
+            function closeModal(modal) {
+                modal.style.display = 'none';
+            }
+            
+            // Закрытие модального окна контактов
+            document.getElementById('closeContactModal').addEventListener('click', function() {
+                closeModal(contactModal);
+            });
+            
+            document.getElementById('cancelContact').addEventListener('click', function() {
+                closeModal(contactModal);
+            });
+            
+            // Закрытие модального окна успеха
+            document.getElementById('closeSuccessModal').addEventListener('click', function() {
+                closeModal(successModal);
+            });
+            
+            document.getElementById('closeSuccess').addEventListener('click', function() {
+                closeModal(successModal);
+            });
+            
+            // Закрытие по клику вне модального окна
+            window.addEventListener('click', function(event) {
+                if (event.target === contactModal) {
+                    closeModal(contactModal);
+                }
+                if (event.target === successModal) {
+                    closeModal(successModal);
+                }
+            });
+            
+            // Валидация формы
+            if (contactForm) {
+                nameInput.addEventListener('input', function() {
+                    validateField(nameInput, nameErrorModal, 4, /^[A-Za-zА-Яа-яЁё\s]{4,}$/, 'Только буквы и пробелы');
+                });
+                
+                messageInput.addEventListener('input', function() {
+                    validateLength(messageInput, messageErrorModal, 10, 'Сообщение');
+                });
+                
+                document.getElementById('sendMessage').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const isNameValid = validateField(nameInput, nameErrorModal, 4, /^[A-Za-zА-Яа-яЁё\s]{4,}$/, 'Только буквы и пробелы');
+                    const isMessageValid = validateLength(messageInput, messageErrorModal, 10, 'Сообщение');
+                    
+                    if (isNameValid && isMessageValid) {
+                        // Закрываем окно контактов и показываем окно успеха
+                        closeModal(contactModal);
+                        successModal.style.display = 'block';
+                        contactForm.reset();
+                    }
+                });
+            }
+            
+            // Функции валидации
+            function validateField(input, errorElement, minLength, regex, errorMessage) {
+                const value = input.value.trim();
+                
+                if (value.length < minLength) {
+                    showError(errorElement, `Минимум ${minLength} символа`);
+                    return false;
+                } else if (regex && !regex.test(value)) {
+                    showError(errorElement, errorMessage);
+                    return false;
+                } else {
+                    hideError(errorElement);
+                    return true;
+                }
+            }
+            
+            function validateLength(input, errorElement, minLength, fieldName) {
+                const value = input.value.trim();
+                
+                if (value.length < minLength) {
+                    showError(errorElement, `${fieldName} слишком короткое. Осталось символов: ${minLength - value.length}`);
+                    return false;
+                } else {
+                    hideError(errorElement);
+                    return true;
+                }
+            }
+            
+            function showError(errorElement, message) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+                errorElement.previousElementSibling.style.borderColor = '#dc2626';
+            }
+            
+            function hideError(errorElement) {
+                errorElement.style.display = 'none';
+                errorElement.previousElementSibling.style.borderColor = '';
+            }
+            
+            // Управление мобильным меню
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileMenuBtn && nav) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    this.setAttribute('aria-expanded', nav.classList.contains('active'));
+                });
+                
+                // Закрытие меню при клике на ссылку
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
